@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ehc-indigo: #4f46e5;
+  --color-ehc-rose: #fef2f2;
+  --color-ehc-light: #e0e7ff;
+}
+
+/* 1. Set global font to Outfit */
+@layer base {
+  body {
+    font-family: 'Outfit', sans-serif;
+    background-image: linear-gradient(to bottom right, #fef2f2, #e0e7ff, #4f46e5);
+    @apply bg-fixed text-slate-800 antialiased selection:bg-ehc-indigo selection:text-white min-h-screen overflow-x-hidden;
+  }
+}
+
+/* 2. Manually create the font-stencil and font-mono classes to guarantee they work */
+@layer utilities {
+  .font-stencil {
+    font-family: "Sirin Stencil", sans-serif !important;
+  }
+  
+  .font-mono {
+    font-family: "Space Mono", monospace !important;
+  }
+}
+
+@layer components {
+  .glass-pill {
+    @apply backdrop-blur-xl bg-white/40 border border-white/60 rounded-full shadow-sm text-slate-800;
+  }
+  
+  .bento-card {
+    @apply bg-white/40 border border-white/60 rounded-[2rem] p-8 backdrop-blur-md transition-all duration-300 hover:bg-white/60 hover:border-white/80 shadow-xl shadow-indigo-900/5 hover:shadow-2xl hover:shadow-indigo-900/10;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ehc-indigo to-indigo-400;
+  }
+}
