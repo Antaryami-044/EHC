@@ -69,7 +69,7 @@ export default function Team() {
           </p>
         </div>
 
-        {/* --- MENTORS SECTION (Mentors keep their photos) --- */}
+        {/* --- MENTORS SECTION --- */}
         <div className="mb-24">
           <div className="flex items-center space-x-6 mb-12">
             <h2 className="text-4xl font-black tracking-tighter uppercase text-slate-400">Mentors</h2>
@@ -92,7 +92,8 @@ export default function Team() {
                     <img src={mentor.img} alt={mentor.name} className="relative z-10 w-full h-full rounded-full border-4 border-white shadow-sm object-cover" />
                   </div>
                   <div className="flex flex-col">
-                    <h3 className="text-xl md:text-2xl font-black tracking-tighter uppercase text-slate-900">{mentor.name}</h3>
+                    {/* CHANGED: Removed 'uppercase' and added 'capitalize' */}
+                    <h3 className="text-xl md:text-2xl font-black tracking-tighter capitalize text-slate-900">{mentor.name}</h3>
                     <p className="text-ehc-indigo text-[10px] font-black tracking-[0.2em] uppercase mt-1">{mentor.role}</p>
                   </div>
                 </div>
@@ -122,9 +123,9 @@ export default function Team() {
                 transition={{ delay: index * 0.05 }} 
                 className="group bento-card bg-white/50 p-6 flex items-center justify-between text-left hover:-translate-y-1"
               >
-                {/* Text Group */}
                 <div className="flex-grow pr-4">
-                  <h3 className="text-base font-black tracking-tighter uppercase text-slate-900 group-hover:text-ehc-indigo transition-colors leading-tight break-words">
+                  {/* CHANGED: Removed 'uppercase' and added 'capitalize' */}
+                  <h3 className="text-base font-black tracking-tighter capitalize text-slate-900 group-hover:text-ehc-indigo transition-colors leading-tight break-words">
                     {member.name}
                   </h3>
                   <p className="text-slate-500 text-[10px] font-black tracking-[0.15em] uppercase mt-1 leading-tight break-words">
@@ -132,7 +133,6 @@ export default function Team() {
                   </p>
                 </div>
                 
-                {/* Conditional Social Icons */}
                 {(member.linkedin || member.instagram) && (
                   <div className="flex-shrink-0 flex gap-2">
                     {member.linkedin && (
@@ -181,9 +181,9 @@ export default function Team() {
                 transition={{ delay: index * 0.05 }} 
                 className="group bento-card bg-white/50 p-6 flex items-center justify-between text-left hover:-translate-y-1"
               >
-                {/* Text Group */}
                 <div className="flex-grow pr-4">
-                  <h3 className="text-base font-black tracking-tighter uppercase text-slate-900 group-hover:text-ehc-indigo transition-colors leading-tight break-words">
+                  {/* CHANGED: Removed 'uppercase' and added 'capitalize' */}
+                  <h3 className="text-base font-black tracking-tighter capitalize text-slate-900 group-hover:text-ehc-indigo transition-colors leading-tight break-words">
                     {member.name}
                   </h3>
                   <p className="text-slate-500 text-[10px] font-black tracking-[0.15em] uppercase mt-1 leading-tight break-words">
@@ -191,7 +191,6 @@ export default function Team() {
                   </p>
                 </div>
                 
-                {/* Conditional Social Icons */}
                 {(member.linkedin || member.instagram) && (
                   <div className="flex-shrink-0 flex gap-2">
                     {member.linkedin && (
