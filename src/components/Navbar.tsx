@@ -72,7 +72,7 @@ export default function Navbar() {
         {/* 3. CTA BUTTON & MOBILE MENU ICON (Right Side) */}
         <div className="flex items-center z-20">
           <a 
-            href="#" 
+            href="https://chat.whatsapp.com/Kj4IH9GcMukAo58Dh0c2hP" 
             className={cn(
               "font-stencil hidden md:block rounded-full bg-slate-900 text-white font-black tracking-widest uppercase hover:bg-ehc-indigo transition-all duration-300 shadow-md",
               scrolled ? "px-5 py-2.5 text-xs" : "px-6 py-3 text-xs"

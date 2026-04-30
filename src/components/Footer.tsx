@@ -69,7 +69,7 @@ export default function Footer() {
                 Connect with fellow innovators and stay updated on real-time club activities.
               </p>
             </div>
-            <a href="#" className="font-stencil w-full py-4 rounded-full bg-ehc-indigo text-white text-[10px] font-black tracking-[0.3em] uppercase text-center hover:bg-slate-900 transition-all duration-300 shadow-md">Join Now</a>
+            <a href="https://chat.whatsapp.com/Kj4IH9GcMukAo58Dh0c2hP" className="font-stencil w-full py-4 rounded-full bg-ehc-indigo text-white text-[10px] font-black tracking-[0.3em] uppercase text-center hover:bg-slate-900 transition-all duration-300 shadow-md">Join Now</a>
           </div>
         </div>
 
