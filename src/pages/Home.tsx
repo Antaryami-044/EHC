@@ -1,98 +1,86 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Cpu, Zap, Globe, ChevronLeft, ChevronRight, Play, Pause, Clock } from 'lucide-react';
-import React, { useState, useEffect, useCallback } from 'react';
+import { Cpu, Zap, Globe, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
 import ehcLogo from '../assets/logo-removebg-preview.png';
 import cktImg from '../assets/home-img.jpg';
 
-// --- DUMMY PROJECT DATA (Top 8 Projects) ---
+// --- REAL PROJECT DATA (Includes all 6 projects & assigned creators) ---
 const projects = [
   {
     id: 1,
-    title: "Smart ECG Cloud Monitor",
-    category: "IoT & Healthcare",
-    desc: "Currently in development, this IoT-based healthcare device measures heartbeats with high precision using an ECG sensor. It actively uploads the real-time heartbeat rate graph to the cloud. Set for final deployment in 2 months.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Collaborative Code Hub",
-    category: "Full-Stack Software",
-    desc: "A highly secure, full-stack collaborative application engineered to manage and share hardware code snippets in real-time among club members during intense hackathons.",
-    img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Invoice-QC Automation",
-    category: "Automation Scripting",
-    desc: "A powerful backend service that validates complex data structures. It successfully reduced manual data verification time by approximately 40% for our club's component procurement records.",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    title: "Autonomous Quadcopter",
-    category: "Robotics",
-    desc: "A custom-built drone featuring an integrated AI pipeline. It utilizes advanced gyroscope fusion and obstacle avoidance algorithms to navigate complex indoor environments autonomously.",
+    title: "Fire Fighter Bot & Agrobot",
+    category: "Robotics & Automation",
+    desc: "An innovative dual-purpose robotics project featuring a fire-fighting module and agricultural automation capabilities.",
+    creators: "M. Tarun, Badal Ritesh Kumar, Pavani Gontia, Sahil Raj Lenka",
+    // To use your own images later, change this to your imported image variable (e.g., img: fireBotImg)
     img: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2000&auto=format&fit=crop",
   },
   {
+    id: 2,
+    title: "Smart Pill Box",
+    category: "Healthcare IoT",
+    desc: "A clever IoT-enabled medical adherence system designed to remind patients to take their medication on schedule using automated alerts.",
+    creators: "Prasidhi Sasmal, Soumya Rani Prusty",
+    img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    title: "Smart Blind Stick",
+    category: "Assistive Technology",
+    desc: "An advanced navigation aid for the visually impaired, utilizing ultrasonic sensors and haptic feedback to detect obstacles in real-time.",
+    creators: "K. Kuresh Reddy, Hrydayesh Debta, B. Sai Ganesh, Aditya Anjangi",
+    img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    id: 4,
+    title: "LED Stack Game",
+    category: "Interactive Hardware",
+    desc: "A fast-paced, reflex-testing arcade-style game built completely from scratch using logic circuits, microcontrollers, and LED arrays.",
+    creators: "Lipsa Acharya, M. Kaivalya",
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
     id: 5,
-    title: "AI DAG Pipeline Builder",
-    category: "System Architecture",
-    desc: "An interactive architectural tool built for our members to visually map and validate Directed Acyclic Graphs (DAGs) before deploying logic to microcontrollers.",
+    title: "Home Automation System",
+    category: "Smart Home",
+    desc: "A centralized Bluetooth and Wi-Fi enabled smart home hub allowing users to control appliances, lights, and security systems securely.",
+    creators: "EHC Development Team",
     img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
   },
   {
     id: 6,
-    title: "Smart Greenhouse",
-    category: "Embedded Systems",
-    desc: "An automated climate control module that monitors soil moisture, ambient humidity, and temperature, triggering localized water pumps using relay logic.",
-    img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 7,
-    title: "RFID Access Grid",
+    title: "RFID Door Lock Security",
     category: "Security Infrastructure",
-    desc: "A centralized, database-backed RFID scanner system designed to manage lab access for EHC members, tracking entry and exit logs via a secure local server.",
-    img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 8,
-    title: "Algorithmic Sensor Node",
-    category: "Data Analytics",
-    desc: "A high-speed sensor node utilizing edge-computing to backtest and analyze environmental data streams directly on the chip before transmitting compressed packets.",
-    img: "https://images.unsplash.com/photo-1517077304055-6e89abf0ceb6?q=80&w=2070&auto=format&fit=crop",
+    desc: "A database-backed RFID scanner system designed to manage lab access, tracking entry and exit logs via a secure local ecosystem.",
+    creators: "EHC Security Team",
+    img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop",
   }
 ];
 
 export default function Home() {
   // --- CAROUSEL STATE ---
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [virtualActiveIndex, setVirtualActiveIndex] = useState(0);
 
-  // Carousel Controls
-  const handleNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  }, []);
+  // Navigation Logic
+  const next = () => setVirtualActiveIndex(prev => prev + 1);
+  const prev = () => setVirtualActiveIndex(prev => prev - 1);
 
-  const handlePrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  }, []);
+  // Generate Array of Visible Items based on infinite virtual index
+  const visibleItems = [];
+  for (let i = -2; i <= 2; i++) {
+      const vIndex = virtualActiveIndex + i;
+      // Handle negative modulo for seamless infinite looping
+      const actualIndex = ((vIndex % projects.length) + projects.length) % projects.length;
+      visibleItems.push({
+          project: projects[actualIndex],
+          offset: i,
+          vIndex
+      });
+  }
 
-  const togglePlayPause = () => {
-    setIsPlaying((prev) => !prev);
-  };
-
-  // Autoplay Logic (Resets timer if user manually clicks next/prev)
-  useEffect(() => {
-    if (!isPlaying) return;
-    
-    const timer = setInterval(() => {
-      handleNext();
-    }, 3000); // 3 seconds delay per slide
-    
-    return () => clearInterval(timer);
-  }, [isPlaying, currentIndex, handleNext]);
+  // Calculate actual display index for dots
+  const currentActualIndex = ((virtualActiveIndex % projects.length) + projects.length) % projects.length;
 
   return (
     <div className="overflow-hidden pb-20">
@@ -198,99 +186,130 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- CUSTOM INDEPENDENT PROJECT CAROUSEL SECTION --- */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      {/* --- AURA 3D CAROUSEL SECTION --- */}
+      <section className="w-full max-w-[100vw] overflow-hidden px-4 py-20 bg-slate-950/5 relative">
         
-        {/* Header and Autoplay Indicator */}
-        <div className="text-center mb-12">
+        {/* Dynamic Header */}
+        <div className="max-w-7xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900">
-            Innovation <span className="text-ehc-indigo">Showcase</span>
+            Aura <span className="text-ehc-indigo">Showcase</span>
           </h2>
-          <div className="flex items-center justify-center space-x-2 mt-4 text-slate-500 font-mono text-xs uppercase tracking-widest">
-            <Clock size={14} className={isPlaying ? "animate-pulse text-ehc-indigo" : ""} />
-            <span>Autoplay {isPlaying ? "On" : "Paused"}</span>
-          </div>
+          <p className="text-slate-400 font-mono text-sm uppercase tracking-widest mt-4">
+            Explore {projects.length} Major Hardware Inventions
+          </p>
         </div>
 
-        {/* Carousel Root Container */}
-        <div className="max-w-5xl mx-auto bg-white/60 border border-white rounded-[2rem] shadow-sm p-4 md:p-8">
-          
-          {/* Sliding Track Viewport */}
-          <div className="overflow-hidden w-full relative rounded-2xl bg-white shadow-inner">
-            <motion.div 
-              className="flex"
-              animate={{ x: `-${currentIndex * 100}%` }}
-              transition={{ type: "spring", stiffness: 250, damping: 30 }}
-            >
-              {projects.map((project) => (
-                <div key={project.id} className="w-full flex-shrink-0 flex-none flex flex-col md:flex-row">
+        {/* 3D Perspective Wrapper */}
+        <div className="relative w-full h-[550px] md:h-[600px] flex items-center justify-center perspective-[1200px] transform-style-3d">
+          <AnimatePresence initial={false}>
+            {visibleItems.map(({ project, offset, vIndex }) => {
+              const isActive = offset === 0;
+              
+              return (
+                <motion.div
+                  key={vIndex}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.8,
+                    x: `${offset * 70}%`, 
+                    z: -300,
+                    rotateY: -offset * 30
+                  }}
+                  animate={{
+                    opacity: isActive ? 1 : 1 - Math.abs(offset) * 0.4,
+                    scale: isActive ? 1 : 0.85,
+                    x: `${offset * 70}%`, // Shifts side cards outward
+                    z: isActive ? 0 : -Math.abs(offset) * 150, // Pushes side cards back
+                    rotateY: -offset * 25, // Rotates side cards inward
+                    zIndex: 10 - Math.abs(offset)
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.8,
+                    x: `${offset * 70}%`,
+                    z: -300,
+                    rotateY: -offset * 30,
+                    zIndex: 0
+                  }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                   
-                  {/* Image Side */}
-                  <div className="w-full md:w-1/2 h-64 md:h-[400px] relative">
-                    <img 
-                      src={project.img} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-ehc-indigo shadow-sm">
+                  // Drag handling for active card
+                  drag={isActive ? "x" : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, { offset }) => {
+                    if (offset.x < -50) next();
+                    else if (offset.x > 50) prev();
+                  }}
+                  
+                  // Click side cards to navigate to them
+                  onClick={() => {
+                    if (offset > 0) next();
+                    else if (offset < 0) prev();
+                  }}
+                  
+                  className={`absolute w-[85vw] max-w-[340px] md:max-w-[420px] h-[480px] md:h-[520px] rounded-3xl overflow-hidden bg-slate-900 border-[2px] transition-colors duration-300 ${isActive ? 'border-ehc-indigo/60 shadow-[0_20px_60px_rgba(99,102,241,0.4)] cursor-grab active:cursor-grabbing' : 'border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer'}`}
+                >
+                  
+                  {/* Glossy Glassmorphism Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent z-10 pointer-events-none" />
+
+                  {/* Project Image */}
+                  <img src={project.img} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-70" />
+
+                  {/* Text Content Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent p-6 md:p-8 flex flex-col justify-end z-20">
+                    <div className="inline-block px-3 py-1 bg-ehc-indigo/20 border border-ehc-indigo/50 text-indigo-300 text-[10px] font-black tracking-widest uppercase rounded-full w-fit mb-4 backdrop-blur-md">
                       {project.category}
                     </div>
-                  </div>
-
-                  {/* Content Side */}
-                  <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-slate-50/50">
-                    <div className="text-slate-400 font-mono font-bold text-sm mb-4">
-                      Project {String(project.id).padStart(2, '0')}
-                    </div>
-                    <h3 className="text-2xl md:text-4xl font-black tracking-tighter uppercase text-slate-900 mb-4 leading-none">
+                    
+                    <h3 className="text-white text-2xl md:text-3xl font-black tracking-tighter uppercase mb-3 leading-tight drop-shadow-md">
                       {project.title}
                     </h3>
-                    <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-8">
+                    
+                    <p className="text-slate-300 text-sm mb-5 line-clamp-3 leading-relaxed">
                       {project.desc}
                     </p>
+                    
+                    {/* Creators Tag */}
+                    <div className="mt-auto pt-4 border-t border-white/20">
+                      <p className="text-ehc-indigo text-[10px] font-black uppercase tracking-widest mb-1">Designed By</p>
+                      <p className="text-white text-xs font-medium leading-snug">{project.creators}</p>
+                    </div>
                   </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
 
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Custom Carousel Controls (Ghost Buttons style) */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button 
-              onClick={handlePrev} 
-              className="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition-colors"
-              aria-label="Previous Slide"
-            >
-              <ChevronLeft size={20} />
+        {/* Carousel Controls */}
+        <div className="max-w-7xl mx-auto flex flex-col items-center mt-12">
+          
+          {/* Next/Prev Buttons (Play/Pause removed) */}
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <button onClick={prev} className="w-14 h-14 rounded-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:shadow-lg transition-all shadow-sm">
+              <ChevronLeft size={28} />
             </button>
 
-            <button 
-              onClick={togglePlayPause} 
-              className="w-12 h-12 rounded-full flex items-center justify-center bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-ehc-indigo transition-colors shadow-sm"
-              aria-label="Toggle Autoplay"
-            >
-              {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" className="ml-1" />}
-            </button>
-
-            <button 
-              onClick={handleNext} 
-              className="w-10 h-10 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition-colors"
-              aria-label="Next Slide"
-            >
-              <ChevronRight size={20} />
+            <button onClick={next} className="w-14 h-14 rounded-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:shadow-lg transition-all shadow-sm">
+              <ChevronRight size={28} />
             </button>
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex items-center justify-center gap-2 mt-6">
+          {/* Minimalist Dots Indicator */}
+          <div className="flex items-center justify-center gap-2">
             {projects.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                   // Calculate how many jumps needed to reach the clicked dot
+                   const diff = index - currentActualIndex;
+                   setVirtualActiveIndex(prev => prev + diff);
+                }}
                 className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex 
-                    ? "w-6 h-2 bg-ehc-indigo" 
+                  index === currentActualIndex 
+                    ? "w-8 h-2 bg-ehc-indigo" 
                     : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
