@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import ehcLogo from '../assets/logo-removebg-preview.png';
 import cktImg from '../assets/home-img.jpg';
 
-// --- REAL PROJECT DATA (Includes all 6 projects & assigned creators) ---
+// --- REAL PROJECT DATA ---
 const projects = [
   {
     id: 1,
@@ -13,7 +13,6 @@ const projects = [
     category: "Robotics & Automation",
     desc: "An innovative dual-purpose robotics project featuring a fire-fighting module and agricultural automation capabilities.",
     creators: "M. Tarun, Badal Ritesh Kumar, Pavani Gontia, Sahil Raj Lenka",
-    // To use your own images later, change this to your imported image variable (e.g., img: fireBotImg)
     img: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2000&auto=format&fit=crop",
   },
   {
@@ -58,29 +57,35 @@ const projects = [
   }
 ];
 
+// --- SEAMLESS INFINITE SLIDER ANIMATION VARIANTS ---
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
+};
+
 export default function Home() {
-  // --- CAROUSEL STATE ---
-  const [virtualActiveIndex, setVirtualActiveIndex] = useState(0);
+  // State for true infinite scrolling
+  const [[page, direction], setPage] = useState([0, 0]);
 
-  // Navigation Logic
-  const next = () => setVirtualActiveIndex(prev => prev + 1);
-  const prev = () => setVirtualActiveIndex(prev => prev - 1);
+  // Safely wrap the index so it loops endlessly in both directions
+  const projectIndex = ((page % projects.length) + projects.length) % projects.length;
+  const activeProject = projects[projectIndex];
 
-  // Generate Array of Visible Items based on infinite virtual index
-  const visibleItems = [];
-  for (let i = -2; i <= 2; i++) {
-      const vIndex = virtualActiveIndex + i;
-      // Handle negative modulo for seamless infinite looping
-      const actualIndex = ((vIndex % projects.length) + projects.length) % projects.length;
-      visibleItems.push({
-          project: projects[actualIndex],
-          offset: i,
-          vIndex
-      });
-  }
-
-  // Calculate actual display index for dots
-  const currentActualIndex = ((virtualActiveIndex % projects.length) + projects.length) % projects.length;
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
 
   return (
     <div className="overflow-hidden pb-20">
@@ -186,138 +191,128 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- AURA 3D CAROUSEL SECTION --- */}
-      <section className="w-full max-w-[100vw] overflow-hidden px-4 py-20 bg-slate-950/5 relative">
+      {/* --- PREMIUM PROJECT SLIDER SECTION (Left Aligned & Dark Theme) --- */}
+      <section className="max-w-7xl mx-auto px-4 py-20">
         
-        {/* Dynamic Header */}
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900">
-            Aura <span className="text-ehc-indigo">Showcase</span>
-          </h2>
-          <p className="text-slate-400 font-mono text-sm uppercase tracking-widest mt-4">
-            Explore {projects.length} Major Hardware Inventions
-          </p>
+        {/* Dynamic Header & Controls (Strictly Left Aligned) */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 w-full text-left">
+          <div className="w-full">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900">
+              Innovation <span className="text-ehc-indigo">Showcase</span>
+            </h2>
+            <p className="text-slate-500 font-mono text-sm uppercase tracking-widest mt-3">
+              Explore {projects.length} Major Hardware Inventions
+            </p>
+          </div>
+          
+          {/* Navigation Buttons */}
+          <div className="flex items-center gap-4 flex-shrink-0">
+            <button 
+              onClick={() => paginate(-1)} 
+              className="w-14 h-14 rounded-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-slate-900 hover:border-slate-900 transition-all shadow-sm focus:outline-none focus:ring-4 focus:ring-slate-900/20"
+              aria-label="Previous Project"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button 
+              onClick={() => paginate(1)} 
+              className="w-14 h-14 rounded-full flex items-center justify-center bg-slate-900 border border-slate-900 text-white hover:bg-ehc-indigo hover:border-ehc-indigo transition-all shadow-lg focus:outline-none focus:ring-4 focus:ring-ehc-indigo/30"
+              aria-label="Next Project"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
         </div>
 
-        {/* 3D Perspective Wrapper */}
-        <div className="relative w-full h-[550px] md:h-[600px] flex items-center justify-center perspective-[1200px] transform-style-3d">
-          <AnimatePresence initial={false}>
-            {visibleItems.map(({ project, offset, vIndex }) => {
-              const isActive = offset === 0;
-              
-              return (
-                <motion.div
-                  key={vIndex}
-                  initial={{
-                    opacity: 0,
-                    scale: 0.8,
-                    x: `${offset * 70}%`, 
-                    z: -300,
-                    rotateY: -offset * 30
-                  }}
-                  animate={{
-                    opacity: isActive ? 1 : 1 - Math.abs(offset) * 0.4,
-                    scale: isActive ? 1 : 0.85,
-                    x: `${offset * 70}%`, // Shifts side cards outward
-                    z: isActive ? 0 : -Math.abs(offset) * 150, // Pushes side cards back
-                    rotateY: -offset * 25, // Rotates side cards inward
-                    zIndex: 10 - Math.abs(offset)
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.8,
-                    x: `${offset * 70}%`,
-                    z: -300,
-                    rotateY: -offset * 30,
-                    zIndex: 0
-                  }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  
-                  // Drag handling for active card
-                  drag={isActive ? "x" : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
-                  onDragEnd={(_, { offset }) => {
-                    if (offset.x < -50) next();
-                    else if (offset.x > 50) prev();
-                  }}
-                  
-                  // Click side cards to navigate to them
-                  onClick={() => {
-                    if (offset > 0) next();
-                    else if (offset < 0) prev();
-                  }}
-                  
-                  className={`absolute w-[85vw] max-w-[340px] md:max-w-[420px] h-[480px] md:h-[520px] rounded-3xl overflow-hidden bg-slate-900 border-[2px] transition-colors duration-300 ${isActive ? 'border-ehc-indigo/60 shadow-[0_20px_60px_rgba(99,102,241,0.4)] cursor-grab active:cursor-grabbing' : 'border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] cursor-pointer'}`}
-                >
-                  
-                  {/* Glossy Glassmorphism Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent z-10 pointer-events-none" />
-
-                  {/* Project Image */}
-                  <img src={project.img} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-70" />
-
-                  {/* Text Content Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-transparent p-6 md:p-8 flex flex-col justify-end z-20">
-                    <div className="inline-block px-3 py-1 bg-ehc-indigo/20 border border-ehc-indigo/50 text-indigo-300 text-[10px] font-black tracking-widest uppercase rounded-full w-fit mb-4 backdrop-blur-md">
-                      {project.category}
-                    </div>
-                    
-                    <h3 className="text-white text-2xl md:text-3xl font-black tracking-tighter uppercase mb-3 leading-tight drop-shadow-md">
-                      {project.title}
-                    </h3>
-                    
-                    <p className="text-slate-300 text-sm mb-5 line-clamp-3 leading-relaxed">
-                      {project.desc}
-                    </p>
-                    
-                    {/* Creators Tag */}
-                    <div className="mt-auto pt-4 border-t border-white/20">
-                      <p className="text-ehc-indigo text-[10px] font-black uppercase tracking-widest mb-1">Designed By</p>
-                      <p className="text-white text-xs font-medium leading-snug">{project.creators}</p>
+        {/* Sliding Viewport (Relative height prevents layout collapse during transitions) */}
+        <div className="relative w-full h-[700px] sm:h-[800px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+          
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={page}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              className="absolute inset-0 w-full h-full"
+            >
+              {/* Individual Project Card - No White Background */}
+              <div className="flex flex-col lg:flex-row bg-slate-900 rounded-3xl overflow-hidden h-full border border-slate-800">
+                
+                {/* Left: Image Container */}
+                <div className="w-full lg:w-3/5 h-[45%] lg:h-full relative group overflow-hidden bg-black">
+                  <img 
+                    src={activeProject.img} 
+                    alt={activeProject.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+                  />
+                  {/* Floating Category Badge */}
+                  <div className="absolute top-6 left-6 z-10">
+                    <div className="bg-black/50 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
+                      <span className="text-white text-[10px] sm:text-xs font-black uppercase tracking-widest">
+                        {activeProject.category}
+                      </span>
                     </div>
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+
+                {/* Right: Content Container (Dark Theme) */}
+                <div className="w-full lg:w-2/5 p-8 md:p-12 flex flex-col justify-center relative text-left">
+                  {/* Faint Background Number */}
+                  <span className="absolute top-4 right-6 text-slate-800/40 font-black text-6xl md:text-8xl -z-0 pointer-events-none select-none">
+                    0{activeProject.id}
+                  </span>
+
+                  <div className="relative z-10 flex flex-col h-full justify-center">
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">
+                      {activeProject.title}
+                    </h3>
+                    
+                    <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8 flex-grow">
+                      {activeProject.desc}
+                    </p>
+                    
+                    {/* Designed By Block */}
+                    <div className="pt-6 border-t border-slate-800">
+                      <p className="text-ehc-indigo text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2">
+                        <Cpu size={14} /> Designed & Engineered By
+                      </p>
+                      <p className="text-slate-200 text-sm font-semibold leading-snug">
+                        {activeProject.creators}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Carousel Controls */}
-        <div className="max-w-7xl mx-auto flex flex-col items-center mt-12">
-          
-          {/* Next/Prev Buttons (Play/Pause removed) */}
-          <div className="flex items-center justify-center gap-6 mb-8">
-            <button onClick={prev} className="w-14 h-14 rounded-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:shadow-lg transition-all shadow-sm">
-              <ChevronLeft size={28} />
-            </button>
-
-            <button onClick={next} className="w-14 h-14 rounded-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:shadow-lg transition-all shadow-sm">
-              <ChevronRight size={28} />
-            </button>
-          </div>
-
-          {/* Minimalist Dots Indicator */}
-          <div className="flex items-center justify-center gap-2">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                   // Calculate how many jumps needed to reach the clicked dot
-                   const diff = index - currentActualIndex;
-                   setVirtualActiveIndex(prev => prev + diff);
-                }}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentActualIndex 
-                    ? "w-8 h-2 bg-ehc-indigo" 
-                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-
+        {/* Minimalist Pagination Dots */}
+        <div className="flex items-center justify-start gap-3 mt-8 ml-2">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                const diff = index - projectIndex;
+                paginate(diff);
+              }}
+              className={`transition-all duration-300 rounded-full ${
+                index === projectIndex 
+                  ? "w-10 h-2 bg-ehc-indigo" 
+                  : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+              }`}
+              aria-label={`Jump to project ${index + 1}`}
+            />
+          ))}
         </div>
+
       </section>
 
     </div>
