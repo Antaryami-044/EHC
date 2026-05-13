@@ -30,29 +30,30 @@ const batch2k23 = [
   { name: "Atanu Jana", role: "President", linkedin: "https://www.linkedin.com/in/atanu1108", instagram: "https://www.instagram.com/atanu_1108" },
   { name: "Alok Kumar Tripathy", role: "Vice President", linkedin: "", instagram: "" },
   { name: "N Srinivas Patnaik", role: "Event Co-ordinator", linkedin: "https://www.linkedin.com/in/n-srinivas-patnaik-037382339", instagram: "" },
-  { name: "S Praveen Kumar", role: "Tech Leader", linkedin: "https://www.linkedin.com/in/s-praveen-kumar-9460072a9?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/onlypraveen02?igsh=cXQ1MmJzamM3M3Zj" },
-  { name: "Nabaneet Mishra", role: "Non-Tech Leader", linkedin: "https://www.linkedin.com/in/nabaneet-mishra-06190a356?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/n_a_b_u_9556_?igsh=MWVpOHhydndxOG54ZA==" },
-  { name: "Arpita Mohanty", role: "Management & Decoration", linkedin: "https://www.linkedin.com/in/arpita-mohanty-a43768297?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/__arpita_058?igsh=bnVqYnY5MzgydmJ6" },
+  { name: "S Praveen Kumar", role: "Tech Leader", linkedin: "https://www.linkedin.com/in/s-praveen-kumar-9460072a9", instagram: "https://www.instagram.com/onlypraveen02?igsh=cXQ1MmJzamM3M3Zj" },
+  { name: "Nabaneet Mishra", role: "Non-Tech Leader", linkedin: "https://www.linkedin.com/in/nabaneet-mishra-06190a356", instagram: "https://www.instagram.com/n_a_b_u_9556_?igsh=MWVpOHhydndxOG54ZA==" },
+  { name: "Arpita Mohanty", role: "Management & Decoration", linkedin: "https://www.linkedin.com/in/arpita-mohanty-a43768297", instagram: "https://www.instagram.com/__arpita_058?igsh=bnVqYnY5MzgydmJ6" },
   { name: "Sradha Panigrahi", role: "Management & Decoration", linkedin: "https://www.linkedin.com/in/sradha-panigrahi-ab732a290", instagram: "https://www.instagram.com/the_great_sradha?igsh=MXcxenVxMjY5bTUy" },
   { name: "Aditya Kumar Nayak", role: "Video Editor", linkedin: " https://www.linkedin.com/in/aditya-kumar-nayak-a75012277/", instagram: " https://www.instagram.com/_1adityayyy/" },
 ];
 
 // 2k24 Batch Members - Only Name, Role, and Socials
 const batch2k24 = [
-  { name: "Arpita Choudhury", role: "Core Member", linkedin: "https://www.linkedin.com/in/arpita-choudhury-26a7692a2?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/starlet_megha?igsh=MW9zbzBrb3BwejZqeg==" },
-  { name: "M Tarun", role: "Core Member", linkedin: "https://www.linkedin.com/in/m-tarun-964372326?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/m_tarun_12?igsh=MWo3NTV3MXU0Z3RrNg==" },
+  { name: "Arpita Choudhury", role: "Core Member", linkedin: "https://www.linkedin.com/in/arpita-choudhury-26a7692a2", instagram: "https://www.instagram.com/starlet_megha?igsh=MW9zbzBrb3BwejZqeg==" },
+  { name: "M Tarun", role: "Core Member", linkedin: "https://www.linkedin.com/in/m-tarun-964372326", instagram: "https://www.instagram.com/m_tarun_12?igsh=MWo3NTV3MXU0Z3RrNg==" },
   { name: "B Sai Ganesh", role: "Core Member", linkedin: "", instagram: "https://www.instagram.com/sai_ganesh_rdy?igsh=ejV5dmRsNWJveXMz" },
   { name: "Arpita Mahapatra", role: "Core Member", linkedin: "https://www.linkedin.com/in/arpita-mahapatra-a33686371", instagram: "https://www.instagram.com/_arpita_mahapatra?igsh=MTk5Mzh2c283aXN4MQ==" },
-  { name: "Pavani Gontia", role: "Core Member", linkedin: "https://www.linkedin.com/in/pavani-gontia-8b9668300?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/p._.gontia?igsh=MWllaGEzZ3lwcjRzcA==" },
+  { name: "Pavani Gontia", role: "Core Member", linkedin: "https://www.linkedin.com/in/pavani-gontia-8b9668300", instagram: "https://www.instagram.com/p._.gontia?igsh=MWllaGEzZ3lwcjRzcA==" },
   { name: "Soumya Rani Prusty", role: "Core Member", linkedin: "https://www.linkedin.com/in/soumya-rani-prusty-6bba47398", instagram: "https://www.instagram.com/___soumya_rani_prusty__?igsh=aDc1bW9veGk0dHVq" },
-  { name: "K Kuresh Reddy", role: "Core Member", linkedin: "https://www.linkedin.com/in/k-kuresh-reddy-231505326?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "" },
-  { name: "Sahil Raj Lenka", role: "Core Member", linkedin: "https://www.linkedin.com/in/sahil-raj-lenka-121417359?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/sahill_raj123?igsh=cWduZDExdG1vdnJo" },
+  { name: "K Kuresh Reddy", role: "Core Member", linkedin: "https://www.linkedin.com/in/k-kuresh-reddy-231505326", instagram: "" },
+  { name: "Sahil Raj Lenka", role: "Core Member", linkedin: "https://www.linkedin.com/in/sahil-raj-lenka-121417359", instagram: "https://www.instagram.com/sahill_raj123?igsh=cWduZDExdG1vdnJo" },
   { name: "Hrydayesh Debta", role: "Core Member", linkedin: "", instagram: "https://www.instagram.com/ig_hrydayeshd?igsh=MTg3Z205c3BiM3lyeQ==" },
-  { name: "Badal Ritesh Kumar", role: "Core Member", linkedin: "https://www.linkedin.com/in/ritesh-kumar-badal-3752a5331?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/riteshbadal1?igsh=ZXMwdmo0OTF4czc=" },
-  { name: "Aditya Kumar Nayak", role: "Core Member", linkedin: "https://www.linkedin.com/in/aditya-kumar-nayak-754570371?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/nayak_aadityakumar?igsh=MWgweGxldTJ1dmF6ZQ==" },
-  { name: "Prasidhi Sasmal", role: "Core Member", linkedin: "https://www.linkedin.com/in/prasidhi-sasmal-31328737a?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "" },
-  { name: "Aditya Anjangi", role: "Core Member", linkedin: "https://www.linkedin.com/in/aditya-anjangi-975253361?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/aditya_anjangi?igsh=MWdqd3ltbGU4NzhjOA==" },
-  { name: "M Kaivalya", role: "Core Member", linkedin: " https://www.linkedin.com/in/m-kaivalya-68a292313?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: " https://www.instagram.com/_kaivalyaa._?igsh=MWRqMXAyMXRkaGFoZA==" }
+  { name: "Badal Ritesh Kumar", role: "Core Member", linkedin: "https://www.linkedin.com/in/ritesh-kumar-badal-3752a5331", instagram: "https://www.instagram.com/riteshbadal1?igsh=ZXMwdmo0OTF4czc=" },
+  { name: "Aditya Kumar Nayak", role: "Core Member", linkedin: "https://www.linkedin.com/in/aditya-kumar-nayak-754570371", instagram: "https://www.instagram.com/nayak_aadityakumar?igsh=MWgweGxldTJ1dmF6ZQ==" },
+  { name: "Prasidhi Sasmal", role: "Core Member", linkedin: "https://www.linkedin.com/in/prasidhi-sasmal-31328737a", instagram: "" },
+  { name: "Aditya Anjangi", role: "Core Member", linkedin: "https://www.linkedin.com/in/aditya-anjangi-975253361", instagram: "https://www.instagram.com/aditya_anjangi?igsh=MWdqd3ltbGU4NzhjOA==" },
+  { name: "M Kaivalya", role: "Core Member", linkedin: " https://www.linkedin.com/in/m-kaivalya-68a292313", instagram: " https://www.instagram.com/_kaivalyaa._?igsh=MWRqMXAyMXRkaGFoZA==" },
+  { name: "Lipsa Acharya", role: "Core Member", linkedin: "https://www.linkedin.com/in/lipsa-acharya-a94795379", instagram: "https://www.instagram.com/lipsacharya?igsh=czE1dzJpdzI4cWVm" }
 ];
 
 export default function Team() {
