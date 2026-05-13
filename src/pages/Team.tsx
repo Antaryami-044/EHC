@@ -32,8 +32,8 @@ const batch2k23 = [
   { name: "N Srinivas Patnaik", role: "Event Co-ordinator", linkedin: "https://www.linkedin.com/in/n-srinivas-patnaik-037382339", instagram: "" },
   { name: "S Praveen Kumar", role: "Tech Leader", linkedin: "https://www.linkedin.com/in/s-praveen-kumar-9460072a9", instagram: "https://www.instagram.com/onlypraveen02?igsh=cXQ1MmJzamM3M3Zj" },
   { name: "Nabaneet Mishra", role: "Non-Tech Leader", linkedin: "https://www.linkedin.com/in/nabaneet-mishra-06190a356", instagram: "https://www.instagram.com/n_a_b_u_9556_?igsh=MWVpOHhydndxOG54ZA==" },
-  { name: "Arpita Mohanty", role: "Management & Decoration", linkedin: "https://www.linkedin.com/in/arpita-mohanty-a43768297", instagram: "https://www.instagram.com/__arpita_058?igsh=bnVqYnY5MzgydmJ6" },
-  { name: "Sradha Panigrahi", role: "Management & Decoration", linkedin: "https://www.linkedin.com/in/sradha-panigrahi-ab732a290", instagram: "https://www.instagram.com/the_great_sradha?igsh=MXcxenVxMjY5bTUy" },
+  { name: "Arpita Mohanty", role: "Social Media Handler", linkedin: "https://www.linkedin.com/in/arpita-mohanty-a43768297", instagram: "https://www.instagram.com/__arpita_058?igsh=bnVqYnY5MzgydmJ6" },
+  { name: "Sradha Panigrahi", role: "Design & Decoration", linkedin: "https://www.linkedin.com/in/sradha-panigrahi-ab732a290", instagram: "https://www.instagram.com/the_great_sradha?igsh=MXcxenVxMjY5bTUy" },
   { name: "Aditya Kumar Nayak", role: "Video Editor", linkedin: " https://www.linkedin.com/in/aditya-kumar-nayak-a75012277/", instagram: " https://www.instagram.com/_1adityayyy/" },
 ];
 
