@@ -186,7 +186,7 @@ export default function Home() {
           {/* Navigation Buttons */}
           <button 
             onClick={prevProject} 
-            className="absolute left-4 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:scale-110 transition-all shadow-xl"
+            className="absolute left-4 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-ehc-indigo hover:cursor-pointer hover:border-ehc-indigo hover:scale-110 transition-all shadow-xl"
             aria-label="Previous Project"
           >
             <ChevronLeft size={28} />
@@ -194,7 +194,7 @@ export default function Home() {
 
           <button 
             onClick={nextProject} 
-            className="absolute right-4 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:scale-110 transition-all shadow-xl"
+            className="absolute right-4 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-ehc-indigo hover:cursor-pointer hover:border-ehc-indigo hover:scale-110 transition-all shadow-xl"
             aria-label="Next Project"
           >
             <ChevronRight size={28} />

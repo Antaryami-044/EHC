@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import React from 'react';
 
-// Exact imports matching the specific uppercase/lowercase extensions from your screenshot
+// Exact imports matching the specific uppercase/lowercase extensions from your code
 import img1 from '../assets/gallery/img1.JPG';
 import img2 from '../assets/gallery/img2.JPG';
 import img3 from '../assets/gallery/img3.jpeg';
@@ -30,34 +31,34 @@ import img24 from '../assets/gallery/img24.JPG';
 import img25 from '../assets/gallery/img25.JPG';
 
 const galleryImages = [
-  { src: img1, category: "Hardware", title: "Circuit Build", desc: "Members assembling a complex breadboard circuit during our weekend hackathon." },
-  { src: img2, category: "Event", title: "Tech Symposium", desc: "Keynote speech at the annual NIST Tech Symposium." },
-  { src: img3, category: "Team", title: "Core Committee", desc: "The EHC Core Committee brainstorming session." },
-  { src: img4, category: "Robotics", title: "Line Follower", desc: "Testing the newly built line follower robot." },
-  { src: img5, category: "Event", title: "Workshop", desc: "Hands-on soldering workshop for first-year students." },
-  { src: img6, category: "Hardware", title: "IoT Sensor", desc: "Calibrating the new IoT weather station module." },
-  { src: img7, category: "Team", title: "Project Demo", desc: "Presenting the final year IoT project to the faculty." },
-  { src: img8, category: "Event", title: "SANKALP Fest", desc: "Crowd gathering for the main event at SANKALP." },
-  { src: img9, category: "Robotics", title: "Drone Assembly", desc: "Fine-tuning the quadcopter ESCs." },
-  { src: img10, category: "Hardware", title: "PCB Design", desc: "Reviewing the custom PCB layout before printing." },
-  { src: img11, category: "Event", title: "Award Ceremony", desc: "Winners of the Circuit-a-Thon receiving their prizes." },
-  { src: img12, category: "Team", title: "Late Night Code", desc: "The software team fixing bugs at 2 AM." },
-  { src: img13, category: "Hardware", title: "Raspberry Pi", desc: "Setting up the Raspberry Pi server for home automation." },
-  { src: img14, category: "Event", title: "Guest Lecture", desc: "Industry expert discussing the future of embedded systems." },
-  { src: img15, category: "Robotics", title: "Arm Calib", desc: "Programming the 6-axis robotic arm." },
-  { src: img16, category: "Team", title: "Group Photo", desc: "EHC members at the end of the semester." },
-  { src: img17, category: "Hardware", title: "Soldering", desc: "Precision soldering on an SMD board." },
-  { src: img18, category: "Event", title: "Exhibition", desc: "Displaying our best projects at the college exhibition." },
-  { src: img19, category: "Robotics", title: "Agrobot Test", desc: "Field testing the agricultural automation bot." },
-  { src: img20, category: "Team", title: "Discussion", desc: "Planning the next major flagship event." },
-  { src: img21, category: "Hardware", title: "Microcontroller", desc: "Flashing firmware onto the ESP32." },
-  { src: img22, category: "Event", title: "Registration", desc: "Students lining up to register for the workshop." },
-  { src: img23, category: "Robotics", title: "Chassis Build", desc: "Assembling the metal chassis for the combat bot." },
-  { src: img24, category: "Team", title: "Mentorship", desc: "Seniors guiding juniors through complex schematics." },
-  { src: img25, category: "Hardware", title: "Oscilloscope", desc: "Analyzing waveforms during circuit debugging." },
+  { src: img1, category: "Sankalp", title: "Day - 1", desc: "Kicking off the grand SANKALP fest with incredible energy and enthusiasm from all participants." },
+  { src: img2, category: "Sankalp", title: "Tech Symposium", desc: "Insightful discussions and expert talks during the annual NIST Tech Symposium." },
+  { src: img3, category: "Sankalp", title: "Core Committee", desc: "The driving force behind the club—our core committee planning the next big thing." },
+  { src: img4, category: "Sankalp", title: "22-23-24", desc: "Generations of innovators coming together to celebrate the spirit of SANKALP." },
+  { src: img5, category: "Sankalp", title: "Batch 2k22", desc: "The brilliant minds of Batch 2k22 showcasing their dedication and teamwork." },
+  { src: img6, category: "Event", title: "Room ShowCase", desc: "A stunning display of our latest hardware prototypes and interactive exhibits." },
+  { src: img7, category: "Event", title: "Project Demo", desc: "Live demonstration of our flagship projects to the faculty and fellow students." },
+  { src: img8, category: "Sankalp", title: "Batch 2k24", desc: "The fresh energy and rising talent of Batch 2k24 at the SANKALP fest." },
+  { src: img9, category: "Team", title: "Girls Group", desc: "Empowering women in tech! Our amazing female members leading by example." },
+  { src: img10, category: "Sankalp", title: "2k23", desc: "Batch 2k23 representing the club with passion and technical excellence." },
+  { src: img11, category: "Team", title: "Batch 22 - 24", desc: "A beautiful collaborative moment bridging the gap between our senior and junior batches." },
+  { src: img12, category: "Team", title: "2022", desc: "Cherishing the memories and incredible milestones achieved by the 2022 team." },
+  { src: img13, category: "Farewell", title: "Welcome Preparation", desc: "Decorating and setting the stage to give our seniors a warm and memorable farewell." },
+  { src: img14, category: "Farewell", title: "Last Day For 2020 Batch", desc: "An emotional send-off for the legendary 2020 batch. Thank you for your guidance!" },
+  { src: img15, category: "Farewell", title: "Moment with Sir", desc: "A heartfelt moment of appreciation with our esteemed mentors and faculty advisors." },
+  { src: img16, category: "Farewell", title: "Group Photo", desc: "One last group picture to capture the unforgettable bonds built at EHC." },
+  { src: img17, category: "Workshop", title: "WorkShop", desc: "Hands-on learning and skill-building during our intensive technical workshop." },
+  { src: img18, category: "Sankalp", title: "Batch 2k21", desc: "Honoring the legacy and outstanding contributions of the 2k21 batch." },
+  { src: img19, category: "Sankalp", title: "2k22", desc: "The 2k22 batch stepping up and making their mark at the annual fest." },
+  { src: img20, category: "Team", title: "2020", desc: "A throwback to the founding pillars of our recent successes—the 2020 team." },
+  { src: img21, category: "Farewell", title: "Final Photo for Batch 2k21", desc: "Saying goodbye to the 2k21 batch with a final, picture-perfect memory." },
+  { src: img22, category: "Farewell", title: "Batch 21-23", desc: "A beautiful transition of leadership and camaraderie between the 21 and 23 batches." },
+  { src: img23, category: "Team", title: "Best Moment For 2k22", desc: "Capturing the joy, teamwork, and unforgettable experiences of the 2k22 batch." },
+  { src: img24, category: "Team", title: "Mentorship", desc: "Seniors passing down their knowledge and guiding the next generation of hardware engineers." },
+  { src: img25, category: "Team", title: "Batch 2K21", desc: "A tribute to the hard work, late nights, and brilliant projects of Batch 2K21." },
 ];
 
-const categories = ["All", "Hardware", "Event", "Team", "Robotics"];
+const categories = ["All", "Sankalp", "Workshop", "Team", "Farewell"];
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -142,7 +143,7 @@ export default function Gallery() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`font-comfortaa px-6 py-2.5 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 ${
+              className={`cursor-pointer font-comfortaa px-6 py-2.5 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 ${
                 activeCategory === category 
                   ? 'bg-ehc-indigo text-white shadow-md scale-105' 
                   : 'bg-white/60 text-slate-600 hover:bg-white hover:shadow-sm border border-white/50'
@@ -155,7 +156,7 @@ export default function Gallery() {
 
         <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
           <AnimatePresence>
-            {filteredImages.map((image, index) => {
+            {filteredImages.map((image) => {
               const originalIndex = displayImages.findIndex(img => img.src === image.src);
               return (
                 <motion.div
@@ -200,22 +201,25 @@ export default function Gallery() {
               onClick={closeLightbox}
             >
               <button 
-                className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
+                className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50 cursor-pointer"
                 onClick={closeLightbox}
+                aria-label="Close Lightbox"
               >
                 <X size={24} />
               </button>
 
               <button 
-                className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
+                className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50 cursor-pointer"
                 onClick={prevImage}
+                aria-label="Previous Image"
               >
                 <ChevronLeft size={32} />
               </button>
 
               <button 
-                className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
+                className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50 cursor-pointer"
                 onClick={nextImage}
+                aria-label="Next Image"
               >
                 <ChevronRight size={32} />
               </button>
