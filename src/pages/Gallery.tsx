@@ -29,191 +29,230 @@ import img23 from '../assets/gallery/img23.jpg';
 import img24 from '../assets/gallery/img24.JPG';
 import img25 from '../assets/gallery/img25.JPG';
 
-// 25 Unique items using your 25 distinct images
-const initialImages = [
-  { id: 1, src: img1, title: "SANKALP Fest", category: "Event", desc: "Showcasing the ultimate hardware showdown and competitive spirit at NIST University." },
-  { id: 2, src: img2, title: "Day-2", category: "sankalp 2025", desc: "The second day of the SANKALP fest, Night photo shoot" },
-  { id: 3, src: img3, title: "Fest Night", category: "sankalp 2024", desc: "Night Shoot" },
-  { id: 4, src: img4, title: "Batch 22-23-24", category: "Group Photo", desc: "Never a dull moment when we're all together." },
-  { id: 5, src: img5, title: "2k22", category: "batchPhoto", desc: "Rooftop laughs and good company." },
-  { id: 6, src: img6, title: "Sankalp day-1", category: "Room", desc: "A thoughtfully curated sanctuary blending cozy textures, ambient lighting, and personal accents to create a stylish, inviting retreat." },
-  { id: 7, src: img7, title: "Project ShowCase", category: "Project", desc: "Demonstrating a custom IoT-based healthcare device measuring real-time heartbeat data using an ECG sensor." },
-  { id: 8, src: img8, title: "2k24", category: "batchPhoto", desc: "Power team assembled!" },
-  { id: 9, src: img9, title: "Senior-Junior", category: "sankalp", desc: "From mentors to friends, building a future together one memory at a time." },
-  { id: 10, src: img10, title: "2k23", category: "batchPhoto", desc: "This photo was taken right before things got chaotic." },
-  { id: 11, src: img11, title: "Mentorship in Action", category: "sankalp", desc: "Cherished Moments & Shared Stories" },
-  { id: 12, src: img12, title: "Club Bonding", category: "Meetup", desc: "The EHC family gathering for a group photo after a successful and busy semester." },
-  { id: 13, src: img13, title: "Welcome Series", category: "Farewell", desc: "Honouring the legacy of our seniors as we celebrate the journey shared and the new adventures ahead." },
-  { id: 14, src: img14, title: "Sensor Fusion 2020", category: "batchPhoto", desc: "Impact Frame" },
-  { id: 15, src: img15, title: "The Powerhouse Crew", category: "Farewell", desc: "How lucky we are to have seniors who make saying goodbye so incredibly hard." },
-  { id: 16, src: img16, title: "20-21-22", category: "Farewell", desc: "Grateful for this tribe and all the memories we've made. ❤️" },
-  { id: 17, src: img17, title: "Electronics Expo", category: "Workshop 22", desc: "Nurturing minds and shaping the future together, one lesson at a time." },
-  { id: 18, src: img18, title: "Batch 2k21", category: "sankalp", desc: "The dream team bringing ideas to life." },
-  { id: 19, src: img19, title: "Batch 2k22", category: "sankalp", desc: "Surrounded by the people who make life fun. 👯‍♀️🔥" },
-  { id: 20, src: img20, title: "Final Chapter: Class of 2020", category: "sankalp", desc: "From strangers to family, capturing our last moment together before the next adventure." },
-  { id: 21, src: img21, title: "2021: End of an Era", category: "Farewell", desc: "Designing and printing custom chassis and mounts for robotics projects." },
-  { id: 22, src: img22, title: "21-24", category: "groupPhoto", desc: "Chasing sunsets and good vibes with the best crew." },
-  { id: 23, src: img23, title: "The Road Less Traveled: 2022", category: "groupPhoto", desc: " Roaming the globe, collecting stories, and sharing laughs." },
-  { id: 24, src: img24, title: "Alumni Meet", category: "Farewell", desc: "We didn't realize we were making memories, we just knew we were having fun." },
-  { id: 25, src: img25, title: "Legacy in Motion", category: "Farewell", desc: "Walked in as strangers, leaving as legends ready to conquer the world." }
+const galleryImages = [
+  { src: img1, category: "Hardware", title: "Circuit Build", desc: "Members assembling a complex breadboard circuit during our weekend hackathon." },
+  { src: img2, category: "Event", title: "Tech Symposium", desc: "Keynote speech at the annual NIST Tech Symposium." },
+  { src: img3, category: "Team", title: "Core Committee", desc: "The EHC Core Committee brainstorming session." },
+  { src: img4, category: "Robotics", title: "Line Follower", desc: "Testing the newly built line follower robot." },
+  { src: img5, category: "Event", title: "Workshop", desc: "Hands-on soldering workshop for first-year students." },
+  { src: img6, category: "Hardware", title: "IoT Sensor", desc: "Calibrating the new IoT weather station module." },
+  { src: img7, category: "Team", title: "Project Demo", desc: "Presenting the final year IoT project to the faculty." },
+  { src: img8, category: "Event", title: "SANKALP Fest", desc: "Crowd gathering for the main event at SANKALP." },
+  { src: img9, category: "Robotics", title: "Drone Assembly", desc: "Fine-tuning the quadcopter ESCs." },
+  { src: img10, category: "Hardware", title: "PCB Design", desc: "Reviewing the custom PCB layout before printing." },
+  { src: img11, category: "Event", title: "Award Ceremony", desc: "Winners of the Circuit-a-Thon receiving their prizes." },
+  { src: img12, category: "Team", title: "Late Night Code", desc: "The software team fixing bugs at 2 AM." },
+  { src: img13, category: "Hardware", title: "Raspberry Pi", desc: "Setting up the Raspberry Pi server for home automation." },
+  { src: img14, category: "Event", title: "Guest Lecture", desc: "Industry expert discussing the future of embedded systems." },
+  { src: img15, category: "Robotics", title: "Arm Calib", desc: "Programming the 6-axis robotic arm." },
+  { src: img16, category: "Team", title: "Group Photo", desc: "EHC members at the end of the semester." },
+  { src: img17, category: "Hardware", title: "Soldering", desc: "Precision soldering on an SMD board." },
+  { src: img18, category: "Event", title: "Exhibition", desc: "Displaying our best projects at the college exhibition." },
+  { src: img19, category: "Robotics", title: "Agrobot Test", desc: "Field testing the agricultural automation bot." },
+  { src: img20, category: "Team", title: "Discussion", desc: "Planning the next major flagship event." },
+  { src: img21, category: "Hardware", title: "Microcontroller", desc: "Flashing firmware onto the ESP32." },
+  { src: img22, category: "Event", title: "Registration", desc: "Students lining up to register for the workshop." },
+  { src: img23, category: "Robotics", title: "Chassis Build", desc: "Assembling the metal chassis for the combat bot." },
+  { src: img24, category: "Team", title: "Mentorship", desc: "Seniors guiding juniors through complex schematics." },
+  { src: img25, category: "Hardware", title: "Oscilloscope", desc: "Analyzing waveforms during circuit debugging." },
 ];
 
+const categories = ["All", "Hardware", "Event", "Team", "Robotics"];
+
 export default function Gallery() {
-  const [displayImages, setDisplayImages] = useState(initialImages);
+  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [displayImages, setDisplayImages] = useState(galleryImages);
 
   useEffect(() => {
-    // Shuffles the array on every page load
-    const shuffleArray = (array: typeof initialImages) => {
-      const shuffled = [...array];
-      for (let i = shuffled.length - 1; i > 0; i--) {
+    const shuffleArray = (array: any[]) => {
+      const newArray = [...array];
+      for (let i = newArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
       }
-      return shuffled;
+      return newArray;
     };
-    
-    setDisplayImages(shuffleArray(initialImages));
 
-    // 2.5 second professional loading screen
+    setDisplayImages(shuffleArray(galleryImages));
+
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500); 
+      setIsLoaded(true);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const openLightbox = (index: number) => setSelectedImageIndex(index);
-  const closeLightbox = () => setSelectedImageIndex(null);
-  const nextImage = () => setSelectedImageIndex((prev) => (prev !== null ? (prev + 1) % displayImages.length : null));
-  const prevImage = () => setSelectedImageIndex((prev) => (prev !== null ? (prev - 1 + displayImages.length) % displayImages.length : null));
+  const filteredImages = activeCategory === "All" 
+    ? displayImages 
+    : displayImages.filter(img => img.category === activeCategory);
+
+  const openLightbox = (index: number) => {
+    setSelectedImageIndex(index);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setSelectedImageIndex(null);
+    document.body.style.overflow = 'auto';
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex + 1) % displayImages.length);
+    }
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImageIndex !== null) {
+      setSelectedImageIndex((selectedImageIndex - 1 + displayImages.length) % displayImages.length);
+    }
+  };
+
+  if (!isLoaded) {
+    return (
+      <div className="fixed inset-0 z-50 bg-slate-900 flex flex-col items-center justify-center">
+        <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="w-16 h-16 border-4 border-ehc-indigo border-t-transparent rounded-full mb-8" />
+        <motion.h2 animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity }} className="font-comfortaa text-white text-2xl font-bold tracking-[0.2em] uppercase">
+          Loading Assets
+        </motion.h2>
+        <p className="text-slate-400 mt-2 text-sm uppercase tracking-widest font-semibold">Initializing Memory Core...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="py-20 px-4 min-h-screen">
       <div className="max-w-7xl mx-auto">
         
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-8 text-slate-900">
-            THE <span className="text-gradient">ARCHIVE</span>
+            MEMORY <span className="text-gradient">CORE</span>
           </motion.h1>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg font-mono uppercase tracking-widest">
-            Capturing the essence of innovation at NIST University.
+          <p className="font-comfortaa text-slate-600 max-w-2xl mx-auto text-lg font-bold uppercase tracking-widest">
+            Visual logs of our journey.
           </p>
         </div>
 
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <motion.div 
-              key="loader"
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="flex flex-col items-center justify-center min-h-[40vh]"
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`font-comfortaa px-6 py-2.5 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 ${
+                activeCategory === category 
+                  ? 'bg-ehc-indigo text-white shadow-md scale-105' 
+                  : 'bg-white/60 text-slate-600 hover:bg-white hover:shadow-sm border border-white/50'
+              }`}
             >
-              <div aria-label="Loading..." role="status" className="flex items-center space-x-3">
-                <svg className="h-8 w-8 animate-spin stroke-slate-500" viewBox="0 0 256 256">
-                  <line x1="128" y1="32" x2="128" y2="64" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="195.9" y1="60.1" x2="173.3" y2="82.7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="224" y1="128" x2="192" y2="128" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="195.9" y1="195.9" x2="173.3" y2="173.3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="128" y1="224" x2="128" y2="192" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="60.1" y1="195.9" x2="82.7" y2="173.3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="32" y1="128" x2="64" y2="128" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                  <line x1="60.1" y1="60.1" x2="82.7" y2="82.7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"></line>
-                </svg>
-                <span className="text-sm font-medium text-slate-500 uppercase tracking-widest font-stencil">Loading Assets...</span>
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div 
-              key="gallery"
-              initial={{ opacity: 0, y: 20 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-            >
-              {displayImages.map((image, index) => (
-                <motion.div 
-                  key={image.id} 
-                  initial={{ opacity: 0, scale: 0.95 }} 
-                  whileInView={{ opacity: 1, scale: 1 }} 
-                  viewport={{ once: true, margin: "100px" }} 
-                  transition={{ delay: (index % 4) * 0.1, duration: 0.4 }} 
-                  onClick={() => openLightbox(index)} 
-                  className={`relative group cursor-pointer overflow-hidden rounded-2xl border-[6px] border-white/60 group-hover:border-ehc-indigo/30 transition-colors duration-500 shadow-sm min-h-[250px] transform-gpu ${index % 5 === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+              {category}
+            </button>
+          ))}
+        </div>
+
+        <motion.div layout className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+          <AnimatePresence>
+            {filteredImages.map((image, index) => {
+              const originalIndex = displayImages.findIndex(img => img.src === image.src);
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4 }}
+                  key={image.src}
+                  className="relative group cursor-pointer break-inside-avoid overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all border-[6px] border-white/60 hover:border-ehc-indigo/30"
+                  onClick={() => openLightbox(originalIndex)}
                 >
                   <img 
                     src={image.src} 
                     alt={image.title} 
-                    decoding="async"
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] transform-gpu will-change-transform" 
+                    loading="lazy" 
+                    className="w-full h-auto object-cover transform-gpu transition-transform duration-700 group-hover:scale-105" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8 z-10">
-                    <span className="text-ehc-light text-[10px] font-black tracking-widest uppercase mb-2">{image.category}</span>
-                    <h3 className="text-2xl font-black tracking-tighter uppercase text-white">{image.title}</h3>
-                    <div className="mt-4 flex items-center text-ehc-rose text-xs font-bold uppercase tracking-widest">
-                      <Maximize2 size={14} className="mr-2" /> View Full
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="font-comfortaa text-ehc-indigo text-[10px] font-bold tracking-widest uppercase mb-2 block">{image.category}</span>
+                      <h3 className="text-white font-black uppercase tracking-tighter text-xl mb-1">{image.title}</h3>
+                      <p className="text-slate-300 text-xs line-clamp-2 font-medium">{image.desc}</p>
                     </div>
                   </div>
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 size={14} />
+                  </div>
                 </motion.div>
-              ))}
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
+
+        <AnimatePresence>
+          {selectedImageIndex !== null && (
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
+              className="fixed inset-0 z-50 bg-slate-900/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
+              onClick={closeLightbox}
+            >
+              <button 
+                className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
+                onClick={closeLightbox}
+              >
+                <X size={24} />
+              </button>
+
+              <button 
+                className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
+                onClick={prevImage}
+              >
+                <ChevronLeft size={32} />
+              </button>
+
+              <button 
+                className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-50"
+                onClick={nextImage}
+              >
+                <ChevronRight size={32} />
+              </button>
+
+              <motion.div 
+                key={selectedImageIndex} 
+                initial={{ opacity: 0, scale: 0.9, y: 20 }} 
+                animate={{ opacity: 1, scale: 1, y: 0 }} 
+                exit={{ opacity: 0, scale: 0.9, y: 20 }} 
+                className="relative max-w-5xl w-full h-full flex flex-col items-center justify-center transform-gpu"
+              >
+                <img 
+                  src={displayImages[selectedImageIndex].src} 
+                  alt={displayImages[selectedImageIndex].title} 
+                  decoding="async"
+                  className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl border-[6px] border-white/60 transform-gpu" 
+                />
+                <div className="mt-8 text-center max-w-2xl px-4">
+                  <span className="font-comfortaa text-ehc-indigo text-xs font-bold tracking-widest uppercase mb-2 block">
+                    {displayImages[selectedImageIndex].category}
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase text-white">
+                    {displayImages[selectedImageIndex].title}
+                  </h2>
+                  <p className="text-slate-300 mt-4 text-sm md:text-base leading-relaxed font-medium">
+                    {displayImages[selectedImageIndex].desc}
+                  </p>
+                  <p className="font-comfortaa text-slate-500 mt-4 text-xs uppercase tracking-widest font-bold">
+                    Image {selectedImageIndex + 1} of {displayImages.length}
+                  </p>
+                </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
-
-      <AnimatePresence>
-        {selectedImageIndex !== null && !isLoading && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }} 
-            className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-10"
-          >
-            <button onClick={closeLightbox} className="absolute top-8 right-8 text-slate-500 hover:text-slate-900 transition-colors z-[110]">
-              <X size={32} />
-            </button>
-            <button onClick={prevImage} className="absolute left-4 md:left-8 text-slate-500 hover:text-slate-900 transition-colors z-[110]">
-              <ChevronLeft size={48} />
-            </button>
-            <button onClick={nextImage} className="absolute right-4 md:right-8 text-slate-500 hover:text-slate-900 transition-colors z-[110]">
-              <ChevronRight size={48} />
-            </button>
-
-            <motion.div 
-              key={displayImages[selectedImageIndex].id} 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }} 
-              animate={{ opacity: 1, scale: 1, y: 0 }} 
-              exit={{ opacity: 0, scale: 0.9, y: 20 }} 
-              className="relative max-w-5xl w-full h-full flex flex-col items-center justify-center transform-gpu"
-            >
-              <img 
-                src={displayImages[selectedImageIndex].src} 
-                alt={displayImages[selectedImageIndex].title} 
-                decoding="async"
-                className="max-w-full max-h-[70vh] object-contain rounded-2xl shadow-2xl border-[6px] border-white/60 transform-gpu" 
-              />
-              <div className="mt-8 text-center max-w-2xl px-4">
-                <span className="text-ehc-indigo text-xs font-black tracking-widest uppercase mb-2 block">
-                  {displayImages[selectedImageIndex].category}
-                </span>
-                <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase text-slate-900">
-                  {displayImages[selectedImageIndex].title}
-                </h2>
-                <p className="text-slate-600 mt-4 text-sm md:text-base leading-relaxed">
-                  {displayImages[selectedImageIndex].desc}
-                </p>
-                <p className="text-slate-400 mt-4 font-mono text-xs uppercase tracking-widest">
-                  Image {selectedImageIndex + 1} of {displayImages.length}
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

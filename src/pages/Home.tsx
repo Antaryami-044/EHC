@@ -13,7 +13,7 @@ const projects = [
     category: "Robotics & Automation",
     desc: "An innovative dual-purpose robotics project featuring a fire-fighting module and agricultural automation capabilities.",
     creators: "M. Tarun, Badal Ritesh Kumar, Pavani Gontia, Sahil Raj Lenka",
-    img: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2000&auto=format&fit=crop",
+    img: "", // Add an image URL here later, and it will automatically become the background!
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const projects = [
     category: "Healthcare IoT",
     desc: "A clever IoT-enabled medical adherence system designed to remind patients to take their medication on schedule using automated alerts.",
     creators: "Prasidhi Sasmal, Soumya Rani Prusty",
-    img: "https://images.unsplash.com/photo-1585435557343-3b092031a831?q=80&w=2070&auto=format&fit=crop",
+    img: "",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const projects = [
     category: "Assistive Technology",
     desc: "An advanced navigation aid for the visually impaired, utilizing ultrasonic sensors and haptic feedback to detect obstacles in real-time.",
     creators: "K. Kuresh Reddy, Hrydayesh Debta, B. Sai Ganesh, Aditya Anjangi",
-    img: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=2070&auto=format&fit=crop",
+    img: "",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const projects = [
     category: "Interactive Hardware",
     desc: "A fast-paced, reflex-testing arcade-style game built completely from scratch using logic circuits, microcontrollers, and LED arrays.",
     creators: "Lipsa Acharya, M. Kaivalya",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
+    img: "",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const projects = [
     category: "Smart Home",
     desc: "A centralized Bluetooth and Wi-Fi enabled smart home hub allowing users to control appliances, lights, and security systems securely.",
     creators: "EHC Development Team",
-    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop",
+    img: "",
   },
   {
     id: 6,
@@ -53,38 +53,19 @@ const projects = [
     category: "Security Infrastructure",
     desc: "A database-backed RFID scanner system designed to manage lab access, tracking entry and exit logs via a secure local ecosystem.",
     creators: "EHC Security Team",
-    img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2070&auto=format&fit=crop",
+    img: "",
   }
 ];
 
-// --- SEAMLESS INFINITE SLIDER ANIMATION VARIANTS ---
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0,
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
-    opacity: 0,
-  }),
-};
-
 export default function Home() {
-  // State for true infinite scrolling
-  const [[page, direction], setPage] = useState([0, 0]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Safely wrap the index so it loops endlessly in both directions
-  const projectIndex = ((page % projects.length) + projects.length) % projects.length;
-  const activeProject = projects[projectIndex];
+  const nextProject = () => {
+    setActiveIndex((prev) => (prev + 1) % projects.length);
+  };
 
-  const paginate = (newDirection: number) => {
-    setPage([page + newDirection, newDirection]);
+  const prevProject = () => {
+    setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
@@ -115,19 +96,19 @@ export default function Home() {
           </motion.div>
           
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1.2 }} className="space-y-4 px-2">
-            <p className="text-xs sm:text-sm md:text-xl font-mono text-slate-500 tracking-[0.2em] sm:tracking-[0.3em] uppercase max-w-2xl mx-auto leading-relaxed">
+            <p className="font-comfortaa text-xs sm:text-sm md:text-xl text-slate-500 tracking-[0.2em] sm:tracking-[0.3em] uppercase max-w-2xl mx-auto leading-relaxed font-bold">
               Building the future of hardware at NIST University
             </p>
-            <motion.p initial={{ opacity: 0, y: 10, filter: "blur(4px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ delay: 1.5, duration: 2, ease: [0.22, 1, 0.36, 1] }} className="text-ehc-indigo font-semibold italic text-base sm:text-lg md:text-2xl tracking-[0.1em] sm:tracking-[0.2em]">
+            <motion.p initial={{ opacity: 0, y: 10, filter: "blur(4px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ delay: 1.5, duration: 2, ease: [0.22, 1, 0.36, 1] }} className="text-ehc-indigo font-bold italic text-base sm:text-lg md:text-2xl tracking-[0.1em] sm:tracking-[0.2em]">
               "...Innovate to Implement"
             </motion.p>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5, duration: 0.8 }} className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full max-w-lg mx-auto sm:max-w-none">
-            <Link to="/events" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-ehc-indigo text-white font-black tracking-widest uppercase rounded-full hover:bg-slate-900 hover:scale-105 transition-all duration-300 shadow-xl shadow-indigo-900/20 text-sm sm:text-base">
+            <Link to="/events" className="font-comfortaa w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-ehc-indigo text-white font-bold tracking-widest uppercase rounded-full hover:bg-slate-900 hover:scale-105 transition-all duration-300 shadow-xl shadow-indigo-900/20 text-sm sm:text-base">
               Explore Events
             </Link>
-            <a href="#" className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white/60 border border-white/50 text-slate-800 font-black tracking-widest uppercase rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
+            <a href="#" className="font-comfortaa w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white/60 border border-white/50 text-slate-800 font-bold tracking-widest uppercase rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
               Join Community
             </a>
           </motion.div>
@@ -137,176 +118,181 @@ export default function Home() {
       {/* --- FEATURES & ABOUT SECTION --- */}
       <section className="max-w-7xl mx-auto px-4 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="md:col-span-2 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/40 blur-[80px] -mr-32 -mt-32 transition-colors" />
+          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="md:col-span-2 bento-card flex flex-col justify-between min-h-[400px] relative overflow-hidden group bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white border-slate-800 shadow-xl">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-ehc-indigo/20 blur-[100px] -mr-32 -mt-32 transition-colors" />
             <div className="relative z-10">
-              <span className="text-ehc-indigo text-xs font-black tracking-widest uppercase mb-4 block">Our Mission</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none mb-6 text-slate-900">
+              <span className="font-comfortaa text-indigo-400 text-xs font-bold tracking-widest uppercase mb-4 block">Our Mission</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-none mb-6 text-white drop-shadow-md">
                 FOSTERING THE <span className="text-slate-400">NEXT GEN</span> OF HARDWARE INNOVATORS.
               </h2>
             </div>
-            <p className="text-slate-600 text-base md:text-lg max-w-xl leading-relaxed relative z-10">
+            <p className="text-slate-300 text-base md:text-lg max-w-xl leading-relaxed relative z-10 font-medium">
               EHC at NIST University is a vibrant community dedicated to exploring the boundaries of hardware, IoT, and circuit skills. We provide a platform for students to transform theoretical knowledge into practical innovation.
             </p>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card bg-indigo-50/50 border-indigo-100 flex flex-col justify-center items-center text-center min-h-[250px] md:min-h-0">
-            <div className="text-6xl md:text-7xl font-black tracking-tighter text-ehc-indigo mb-2">50+</div>
-            <div className="text-slate-500 text-xs font-black tracking-widest uppercase">Active Members</div>
+          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card bg-gradient-to-br from-indigo-500 to-indigo-700 border-indigo-400 flex flex-col justify-center items-center text-center min-h-[250px] md:min-h-0 text-white shadow-xl shadow-indigo-900/20">
+            <div className="text-6xl md:text-7xl font-black tracking-tighter mb-2 drop-shadow-md">50+</div>
+            <div className="font-comfortaa text-indigo-100 text-xs font-bold tracking-widest uppercase">Active Members</div>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card group">
-            <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-ehc-indigo mb-6 group-hover:scale-110 transition-transform"><Zap size={24} /></div>
-            <h3 className="text-xl md:text-2xl font-black mb-2 uppercase tracking-tighter text-slate-900">IoT Dev</h3>
-            <p className="text-slate-600 text-sm">Connecting the physical world to the digital realm with smart sensors.</p>
+          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card group bg-blue-50/80 border-blue-100 hover:bg-blue-100/80 transition-colors duration-300">
+            <div className="w-12 h-12 bg-blue-500 rounded-2xl shadow-md flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"><Zap size={24} /></div>
+            <h3 className="font-comfortaa text-xl md:text-2xl font-bold mb-2 uppercase tracking-tight text-blue-950">IoT Dev</h3>
+            <p className="text-blue-800/80 text-sm font-semibold leading-relaxed">Connecting the physical world to the digital realm with smart sensors.</p>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card group">
-            <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-ehc-indigo mb-6 group-hover:scale-110 transition-transform"><Cpu size={24} /></div>
-            <h3 className="text-xl md:text-2xl font-black mb-2 uppercase tracking-tighter text-slate-900">Circuit Design</h3>
-            <p className="text-slate-600 text-sm">Mastering the art of efficient micro-scale architecture and PCB design.</p>
+          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card group bg-purple-50/80 border-purple-100 hover:bg-purple-100/80 transition-colors duration-300">
+            <div className="w-12 h-12 bg-purple-500 rounded-2xl shadow-md flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"><Cpu size={24} /></div>
+            <h3 className="font-comfortaa text-xl md:text-2xl font-bold mb-2 uppercase tracking-tight text-purple-950">Circuit Design</h3>
+            <p className="text-purple-800/80 text-sm font-semibold leading-relaxed">Mastering the art of efficient micro-scale architecture and PCB design.</p>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card group">
-            <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-ehc-indigo mb-6 group-hover:scale-110 transition-transform"><Globe size={24} /></div>
-            <h3 className="text-xl md:text-2xl font-black mb-2 uppercase tracking-tighter text-slate-900">Robotics</h3>
-            <p className="text-slate-600 text-sm">Engineering autonomous intelligence and mechanical precision.</p>
+          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bento-card group bg-teal-50/80 border-teal-100 hover:bg-teal-100/80 transition-colors duration-300">
+            <div className="w-12 h-12 bg-teal-500 rounded-2xl shadow-md flex items-center justify-center text-white mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"><Globe size={24} /></div>
+            <h3 className="font-comfortaa text-xl md:text-2xl font-bold mb-2 uppercase tracking-tight text-teal-950">Robotics</h3>
+            <p className="text-teal-800/80 text-sm font-semibold leading-relaxed">Engineering autonomous intelligence and mechanical precision.</p>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="md:col-span-3 bento-card bg-white/60 border-white flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <motion.div whileHover={{ y: -5 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="md:col-span-3 bento-card bg-gradient-to-r from-slate-50 to-white border-slate-200 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 shadow-sm">
             <div className="max-w-xl text-center lg:text-left">
               <h2 className="text-3xl sm:text-4xl font-black tracking-tighter mb-4 uppercase text-slate-900">Join the SANKALP Fest</h2>
-              <p className="text-slate-600 mb-8 text-sm sm:text-base">Our flagship annual event is back. Register now to showcase your innovation and win exciting prizes.</p>
-              <Link to="/events" className="inline-block px-8 py-4 bg-slate-900 text-white font-black tracking-widest uppercase rounded-full hover:bg-ehc-indigo hover:scale-105 transition-all shadow-xl text-sm sm:text-base">Register Now</Link>
+              <p className="font-medium mb-8 text-sm sm:text-base text-slate-600">Our flagship annual event is back. Register now to showcase your innovation and win exciting prizes.</p>
+              <Link to="/events" className="font-comfortaa inline-block px-8 py-4 bg-slate-900 text-white font-bold tracking-widest uppercase rounded-full hover:bg-ehc-indigo hover:scale-105 transition-all shadow-xl text-sm sm:text-base">Register Now</Link>
             </div>
-            
-            <div className="w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-lg border-[6px] border-white/60 hover:border-ehc-indigo/30 transition-colors duration-500 group relative bg-white/50 flex items-center justify-center p-2">
-              <img 
-                src={cktImg} 
-                alt="Fest" 
-                className="w-full h-auto block object-contain transition-transform duration-700 group-hover:scale-110 transform-gpu" 
-              />
+            <div className="w-full lg:w-1/2 rounded-3xl overflow-hidden shadow-lg border-[6px] border-white hover:border-ehc-indigo/30 transition-colors duration-500 group relative bg-white flex items-center justify-center p-2">
+              <img src={cktImg} alt="Fest" className="w-full h-auto block object-contain transition-transform duration-700 group-hover:scale-110 transform-gpu" />
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* --- PREMIUM PROJECT SLIDER SECTION (Left Aligned & Dark Theme) --- */}
-      <section className="max-w-7xl mx-auto px-4 py-20">
+      {/* --- PREMIUM CENTERED CAROUSEL --- */}
+      <section className="w-full bg-slate-950 py-24 relative overflow-hidden">
         
-        {/* Dynamic Header & Controls (Strictly Left Aligned) */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6 w-full text-left">
-          <div className="w-full">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900">
-              Innovation <span className="text-ehc-indigo">Showcase</span>
-            </h2>
-            <p className="text-slate-500 font-mono text-sm uppercase tracking-widest mt-3">
-              Explore {projects.length} Major Hardware Inventions
-            </p>
-          </div>
-          
-          {/* Navigation Buttons */}
-          <div className="flex items-center gap-4 flex-shrink-0">
-            <button 
-              onClick={() => paginate(-1)} 
-              className="w-14 h-14 rounded-full flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-white hover:bg-slate-900 hover:border-slate-900 transition-all shadow-sm focus:outline-none focus:ring-4 focus:ring-slate-900/20"
-              aria-label="Previous Project"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button 
-              onClick={() => paginate(1)} 
-              className="w-14 h-14 rounded-full flex items-center justify-center bg-slate-900 border border-slate-900 text-white hover:bg-ehc-indigo hover:border-ehc-indigo transition-all shadow-lg focus:outline-none focus:ring-4 focus:ring-ehc-indigo/30"
-              aria-label="Next Project"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
+        {/* Dynamic Header */}
+        <div className="max-w-7xl mx-auto px-4 text-center mb-16 relative z-20">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white">
+            Innovation <span className="text-ehc-indigo">Showcase</span>
+          </h2>
+          <p className="font-comfortaa text-slate-400 font-bold text-xs md:text-sm uppercase tracking-widest mt-4">
+            Explore {projects.length} Major Hardware Inventions
+          </p>
         </div>
 
-        {/* Sliding Viewport (Relative height prevents layout collapse during transitions) */}
-        <div className="relative w-full h-[700px] sm:h-[800px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+        {/* Carousel Container */}
+        <div className="relative w-full h-[500px] md:h-[550px] flex items-center justify-center">
           
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={page}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className="absolute inset-0 w-full h-full"
-            >
-              {/* Individual Project Card - No White Background */}
-              <div className="flex flex-col lg:flex-row bg-slate-900 rounded-3xl overflow-hidden h-full border border-slate-800">
-                
-                {/* Left: Image Container */}
-                <div className="w-full lg:w-3/5 h-[45%] lg:h-full relative group overflow-hidden bg-black">
-                  <img 
-                    src={activeProject.img} 
-                    alt={activeProject.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
-                  />
-                  {/* Floating Category Badge */}
-                  <div className="absolute top-6 left-6 z-10">
-                    <div className="bg-black/50 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
-                      <span className="text-white text-[10px] sm:text-xs font-black uppercase tracking-widest">
-                        {activeProject.category}
-                      </span>
-                    </div>
+          {/* Navigation Buttons */}
+          <button 
+            onClick={prevProject} 
+            className="absolute left-4 md:left-12 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:scale-110 transition-all shadow-xl"
+            aria-label="Previous Project"
+          >
+            <ChevronLeft size={28} />
+          </button>
+
+          <button 
+            onClick={nextProject} 
+            className="absolute right-4 md:right-12 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-ehc-indigo hover:border-ehc-indigo hover:scale-110 transition-all shadow-xl"
+            aria-label="Next Project"
+          >
+            <ChevronRight size={28} />
+          </button>
+
+          {/* Cards Track */}
+          <div className="relative w-full max-w-[1200px] mx-auto h-full flex items-center justify-center perspective-[1000px]">
+            {projects.map((project, index) => {
+              
+              let offset = index - activeIndex;
+              if (offset < -Math.floor(projects.length / 2)) offset += projects.length;
+              if (offset > Math.floor(projects.length / 2)) offset -= projects.length;
+
+              const isActive = offset === 0;
+
+              return (
+                <motion.div
+                  key={project.id}
+                  className="absolute top-0 w-[85vw] max-w-[350px] md:max-w-[450px] h-full rounded-[2rem] overflow-hidden shadow-2xl flex flex-col cursor-pointer group border border-white/10"
+                  animate={{
+                    x: `${offset * 105}%`,
+                    scale: isActive ? 1 : 0.85,
+                    opacity: isActive ? 1 : 0.4,
+                    zIndex: isActive ? 20 : 10 - Math.abs(offset),
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  onClick={() => {
+                    if (!isActive) setActiveIndex(index);
+                  }}
+                >
+                  {/* --- BACKGROUND LAYER --- */}
+                  <div className="absolute inset-0 z-0">
+                    {project.img ? (
+                      <>
+                        {/* If image exists, use it as background with a strong gradient overlay for text readability */}
+                        <img src={project.img} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/80 to-slate-900/40" />
+                      </>
+                    ) : (
+                      /* If no image exists, use a premium dark gradient fallback */
+                      <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950">
+                        <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-ehc-indigo/20 blur-[80px] rounded-full transition-colors duration-500 group-hover:bg-ehc-indigo/40" />
+                      </div>
+                    )}
                   </div>
-                </div>
 
-                {/* Right: Content Container (Dark Theme) */}
-                <div className="w-full lg:w-2/5 p-8 md:p-12 flex flex-col justify-center relative text-left">
-                  {/* Faint Background Number */}
-                  <span className="absolute top-4 right-6 text-slate-800/40 font-black text-6xl md:text-8xl -z-0 pointer-events-none select-none">
-                    0{activeProject.id}
-                  </span>
-
-                  <div className="relative z-10 flex flex-col h-full justify-center">
-                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter mb-6 leading-tight">
-                      {activeProject.title}
-                    </h3>
+                  {/* --- FOREGROUND TEXT LAYER --- */}
+                  <div className="relative z-10 p-8 md:p-10 flex flex-col h-full text-left">
                     
-                    <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8 flex-grow">
-                      {activeProject.desc}
-                    </p>
-                    
-                    {/* Designed By Block */}
-                    <div className="pt-6 border-t border-slate-800">
-                      <p className="text-ehc-indigo text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2">
-                        <Cpu size={14} /> Designed & Engineered By
-                      </p>
-                      <p className="text-slate-200 text-sm font-semibold leading-snug">
-                        {activeProject.creators}
-                      </p>
+                    {/* Top Tag */}
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-full w-fit mb-auto">
+                      <span className="font-comfortaa text-white text-[10px] md:text-xs font-bold uppercase tracking-widest">{project.category}</span>
                     </div>
-                  </div>
-                </div>
+                    
+                    {/* Main Content (Pushed to bottom) */}
+                    <div className="mt-auto pt-8">
+                      <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter mb-4 leading-tight drop-shadow-lg">
+                        {project.title}
+                      </h3>
+                      
+                      <p className="text-slate-300 text-sm md:text-base font-medium leading-relaxed mb-8 drop-shadow-md line-clamp-3">
+                        {project.desc}
+                      </p>
+                      
+                      {/* Footer Info */}
+                      <div className="pt-5 border-t border-white/20 flex flex-col justify-start">
+                        <p className="font-comfortaa text-ehc-indigo text-[10px] font-bold uppercase tracking-widest mb-1.5 flex items-center gap-1.5">
+                          <Cpu size={14}/> Designed By
+                        </p>
+                        <p className="text-white text-sm font-semibold leading-snug drop-shadow-sm">
+                          {project.creators}
+                        </p>
+                      </div>
+                    </div>
 
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                    {/* Massive Background Number Overlay */}
+                    <span className="font-comfortaa absolute top-6 right-6 text-white/10 font-black text-6xl md:text-8xl leading-none pointer-events-none select-none z-0">
+                      0{project.id}
+                    </span>
+                  </div>
+
+                </motion.div>
+              );
+            })}
+          </div>
+
         </div>
 
         {/* Minimalist Pagination Dots */}
-        <div className="flex items-center justify-start gap-3 mt-8 ml-2">
+        <div className="flex items-center justify-center gap-3 mt-12 relative z-20">
           {projects.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                const diff = index - projectIndex;
-                paginate(diff);
-              }}
+              onClick={() => setActiveIndex(index)}
               className={`transition-all duration-300 rounded-full ${
-                index === projectIndex 
-                  ? "w-10 h-2 bg-ehc-indigo" 
-                  : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
+                index === activeIndex 
+                  ? "w-8 h-2.5 bg-ehc-indigo" 
+                  : "w-2.5 h-2.5 bg-slate-600 hover:bg-slate-500"
               }`}
               aria-label={`Jump to project ${index + 1}`}
             />

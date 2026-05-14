@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, MapPin, Clock, Zap, Cpu, Gamepad2, Globe, Lock, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { Calendar, MapPin, Clock, Zap, Cpu, Gamepad2, Globe, Lock, ChevronDown, ChevronUp } from 'lucide-react';
 
 import sampratyaImg from '../assets/sampratya prastuti.jpeg';
 import posterImg from '../assets/idea presentation.JPG';
@@ -21,7 +20,7 @@ const events = [
     img: sampratyaImg, 
     category: "Idea Presentation", 
     icon: <Zap className="text-ehc-indigo" size={14} />,
-    formUrl: "", // Add your Google Form link here to open registrations!
+    formUrl: "", 
     steps: [
       "Abstract Submission: Present your core idea and approach.",
       "Idea Pitching: Pitch your hardware solution to the judges.",
@@ -31,62 +30,62 @@ const events = [
   },
   {
     id: 2, 
-    title: "Technical Poster", 
+    title: "Poster Presentation", 
     subtitle: "Visual Innovation", 
-    tagline: "Visually communicate your innovations!",
-    date: "Nov 6th, 2025", 
+    tagline: "Design the future of green tech.",
+    date: "Nov 7th, 2025", 
     time: "2nd Half", 
-    location: "The Atrium",
-    desc: "Present your research and ideas through compelling visual posters. Categories include Healthcare, Education, Renewable Energy, and Innovation.",
+    location: "Galleria",
+    desc: "Create impactful posters outlining your approach to the 'Green Electronics' theme.",
     img: posterImg, 
-    category: "Visual Innovation", 
-    icon: <Globe className="text-indigo-500" size={14} />,
+    category: "Design", 
+    icon: <Globe className="text-ehc-indigo" size={14} />,
     formUrl: "", 
     steps: [
-      "Topic Selection: Choose a relevant electronics/IoT domain.",
-      "Poster Design: Create a visually compelling technical poster.",
-      "Exhibition: Display your poster for attendees and judges.",
-      "Presentation: Briefly explain your concept and answer queries."
+      "Topic Selection: Choose a specific area within Green Electronics.",
+      "Design & Layout: Create an engaging and informative A1 poster.",
+      "Exhibition: Display your poster to attendees and judges.",
+      "Briefing: Give a 2-minute pitch explaining your visual data."
     ]
   },
   {
     id: 3, 
-    title: "Hardware Hunt", 
-    subtitle: "Interactive Tech Games", 
-    tagline: "Test your reflexes and logic!",
-    date: "Nov 6th & 7th, 2025", 
-    time: "Round 1 & 2", 
-    location: "The Atrium",
-    desc: "Play exciting new games designed entirely by our team using different electronics and components! Experience custom-built hardware challenges like fast-reaction games using buttons and LEDs.",
+    title: "Treasure Hunt", 
+    subtitle: "Tech Quest", 
+    tagline: "Decode, Search, and Conquer!",
+    date: "Nov 8th, 2025", 
+    time: "1st Half", 
+    location: "Campus Wide",
+    desc: "A thrilling tech-based treasure hunt where hardware clues lead to the ultimate prize.",
     img: huntImg, 
-    category: "Interactive Hardware", 
-    icon: <Gamepad2 className="text-indigo-500" size={14} />,
-    formUrl: "", 
+    category: "Competition", 
+    icon: <Gamepad2 className="text-ehc-indigo" size={14} />,
+    formUrl: "",
     steps: [
-      "Round 1 (Nov 6): Identify electronic components and solve basic clues.",
-      "Logic Puzzles: Complete rapid-fire technical challenges.",
-      "Round 2 (Nov 7): Fast-reaction LED and button gameplay.",
-      "Final Execution: Highest scorers win the ultimate Hardware Hunt."
+      "Team Registration: Form a squad of 3-4 members.",
+      "The First Cipher: Decode an Arduino serial output to find the first location.",
+      "Physical Challenges: Complete circuit-building tasks at checkpoints.",
+      "The Final Relay: Race to assemble the master circuit to stop the timer."
     ]
   },
   {
     id: 4, 
-    title: "Circuit-A-Thon", 
-    subtitle: "Design Challenge", 
-    tagline: "Spark Your Creativity!",
-    date: "Nov 7th, 2025", 
-    time: "1st Half", 
-    location: "The Atrium",
-    desc: "A thrilling event on electronic circuit design. Create a functioning circuit using the least number of wires! Test your efficiency and logic.",
+    title: "Circuit-a-Thon", 
+    subtitle: "Hardware Hackathon", 
+    tagline: "Build, debug, and innovate.",
+    date: "Nov 8th, 2025", 
+    time: "2nd Half", 
+    location: "VLSI Lab",
+    desc: "A hands-on competition testing your circuit design, debugging, and breadboarding skills under pressure.",
     img: circuitImg, 
-    category: "Design Challenge", 
-    icon: <Cpu className="text-indigo-400" size={14} />,
-    formUrl: "", 
+    category: "Hackathon", 
+    icon: <Cpu className="text-ehc-indigo" size={14} />,
+    formUrl: "",
     steps: [
-      "Problem Reveal: Receive your specific circuit problem statement.",
-      "Circuit Simulation: Draft and verify your logic on paper/software.",
-      "Hardware Assembly: Build the functioning circuit using minimal wires.",
-      "Testing & Optimization: Demonstrate the working output to judges."
+      "Component Drafting: Select components from the provided inventory.",
+      "Circuit Design: Sketch the logic and schematic.",
+      "Breadboard Assembly: Wire the physical circuit.",
+      "Debugging & Testing: Ensure the output meets the problem statement."
     ]
   }
 ];
@@ -94,112 +93,122 @@ const events = [
 export default function Events() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  const toggleDetails = (id: number) => {
+  const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
   return (
-    <div className="py-20 px-4">
+    <div className="py-20 px-4 min-h-screen">
       <div className="max-w-7xl mx-auto">
         
+        {/* Page Header */}
         <div className="text-center mb-20">
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="inline-block px-4 py-1 bg-white/60 rounded-full shadow-sm text-ehc-indigo text-[10px] font-black tracking-[0.3em] uppercase mb-6 border border-white">Flagship Fest 2025</motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-8 text-slate-900">SANKALP <span className="text-gradient">FEST</span></motion.h1>
-          <p className="text-slate-600 max-w-2xl mx-auto text-lg font-mono uppercase tracking-widest">The ultimate hardware showdown at NIST University.</p>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-5xl md:text-9xl font-black tracking-tighter leading-none mb-8 text-slate-900">
+            SANKALP <span className="text-gradient">FEST</span>
+          </motion.h1>
+          <p className="font-comfortaa text-slate-600 max-w-2xl mx-auto text-lg font-bold uppercase tracking-widest">
+            The Ultimate Hardware Symposium.
+          </p>
         </div>
 
-        <div className="space-y-12">
+        {/* Event List Container - Widened to max-w-6xl for horizontal cards */}
+        <div className="flex flex-col gap-12 max-w-6xl mx-auto">
           {events.map((event, index) => (
-            <motion.div key={event.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group bento-card overflow-hidden p-0 flex flex-col lg:flex-row bg-white/50 relative">
+            <motion.div 
+              key={event.id} 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true, margin: "-100px" }} 
+              transition={{ duration: 0.5, delay: index * 0.1 }} 
+              // Changed to flex-col (mobile) AND lg:flex-row (desktop side-by-side)
+              className="bento-card bg-white/60 p-0 overflow-hidden flex flex-col lg:flex-row hover:-translate-y-2 transition-all duration-300"
+            >
               
-              {/* Image Section */}
-              <div className="lg:w-1/3 relative p-4 flex flex-col">
-                <div className="w-full h-full min-h-[250px] relative overflow-hidden rounded-2xl border-[6px] border-white/60 group-hover:border-ehc-indigo/30 transition-colors duration-500 shadow-sm">
-                  <img 
-                    src={event.img} 
-                    alt={event.title} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.02] group-hover:opacity-100" 
-                  />
-                  <div className="absolute top-4 left-4 z-10">
-                    <div className="bg-white/90 backdrop-blur-md rounded-full border border-white/50 shadow-sm px-3 py-1.5 flex items-center space-x-2">
-                      {event.icon}
-                      <span className="text-[10px] font-black tracking-widest uppercase text-slate-800">{event.category}</span>
-                    </div>
-                  </div>
+              {/* LEFT SIDE: Image Container */}
+              <div className="relative w-full lg:w-5/12 h-64 sm:h-80 lg:h-auto shrink-0 bg-slate-900 overflow-hidden">
+                {/* Image uses absolute inset-0 to perfectly stretch and cover the container height */}
+                <img 
+                  src={event.img} 
+                  alt={event.title} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105" 
+                />
+                {/* Floating Category Badge */}
+                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2 shadow-sm z-10">
+                  {event.icon}
+                  <span className="font-comfortaa text-xs font-bold tracking-widest uppercase text-slate-800">{event.category}</span>
                 </div>
               </div>
 
-              {/* Content Section */}
-              <div className="lg:w-2/3 p-8 md:p-12 flex flex-col justify-between">
-                <div>
-                  <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-6 text-slate-900 group-hover:text-ehc-indigo transition-colors">{event.title}</h2>
-                  <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">{event.desc}</p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                    <div className="flex items-center space-x-3 text-slate-500">
-                      <Calendar size={18} className="text-ehc-indigo" />
-                      <span className="text-xs font-mono uppercase tracking-wider">{event.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-3 text-slate-500">
-                      <Clock size={18} className="text-indigo-400" />
-                      <span className="text-xs font-mono uppercase tracking-wider">{event.time}</span>
-                    </div>
-                    <div className="flex items-center space-x-3 text-slate-500">
-                      <MapPin size={18} className="text-indigo-500" />
-                      <span className="text-xs font-mono uppercase tracking-wider">{event.location}</span>
-                    </div>
-                  </div>
+              {/* RIGHT SIDE: Event Details Container */}
+              <div className="w-full lg:w-7/12 p-8 md:p-12 flex flex-col">
+                <div className="mb-6">
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase text-slate-900 mb-2">{event.title}</h2>
+                  <h3 className="font-comfortaa text-ehc-indigo font-bold tracking-widest uppercase text-sm">{event.subtitle}</h3>
                 </div>
                 
-                <div className="flex flex-wrap gap-4 mt-auto">
+                <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-8 flex-grow font-medium">
+                  {event.desc}
+                </p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 bg-slate-50 p-4 md:p-6 rounded-2xl border border-slate-100">
+                  <div className="flex items-center space-x-3 text-slate-600">
+                    <Calendar className="text-ehc-indigo" size={18} />
+                    <span className="text-sm font-semibold">{event.date}</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-slate-600">
+                    <Clock className="text-ehc-indigo" size={18} />
+                    <span className="text-sm font-semibold">{event.time}</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-slate-600 col-span-2 md:col-span-2">
+                    <MapPin className="text-ehc-indigo" size={18} />
+                    <span className="text-sm font-semibold">{event.location}</span>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row items-center gap-4 mt-auto">
                   {event.formUrl ? (
                     <a 
                       href={event.formUrl} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="font-stencil px-8 py-4 bg-ehc-indigo text-white font-black tracking-widest uppercase rounded-full hover:bg-slate-900 transition-all flex items-center space-x-2 group/btn shadow-md"
+                      className="font-comfortaa w-full sm:w-auto flex-1 py-4 bg-ehc-indigo text-white font-bold tracking-widest uppercase rounded-full hover:bg-slate-900 transition-colors text-center text-sm shadow-md"
                     >
-                      <span>Register Now</span>
-                      <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                      Register Now
                     </a>
                   ) : (
-                    <button disabled className="font-stencil px-8 py-4 bg-slate-200 text-slate-500 font-black tracking-widest uppercase rounded-full flex items-center space-x-2 cursor-not-allowed shadow-sm border border-slate-300">
-                      <Lock size={16} />
-                      <span>Closed</span>
+                    <button disabled className="font-comfortaa w-full sm:w-auto flex-1 py-4 bg-slate-100 text-slate-400 font-bold tracking-widest uppercase rounded-full cursor-not-allowed text-center text-sm flex items-center justify-center gap-2">
+                      <Lock size={14} /> Registration Closed
                     </button>
                   )}
                   
-                  {/* Details Button - Added cursor-pointer */}
                   <button 
-                    onClick={() => toggleDetails(event.id)} 
-                    className={cn(
-                      "cursor-pointer font-stencil px-8 py-4 border font-black tracking-widest uppercase rounded-full transition-all flex items-center space-x-2 shadow-sm",
-                      expandedId === event.id ? "bg-slate-900 text-white border-slate-900" : "bg-white/60 text-slate-800 border-white hover:bg-white"
-                    )}
+                    onClick={() => toggleExpand(event.id)}
+                    className="font-comfortaa w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold tracking-widest uppercase rounded-full hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 text-sm"
                   >
-                    <span>{expandedId === event.id ? 'Close Details' : 'Details'}</span>
-                    {expandedId === event.id ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    Details {expandedId === event.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </button>
                 </div>
 
-                {/* Event Execution Plan */}
+                {/* Expandable Execution Plan */}
                 <AnimatePresence>
                   {expandedId === event.id && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden border-t border-slate-300/50 mt-8"
+                      className="overflow-hidden border-t border-slate-200 mt-8"
                     >
                       <div className="pt-8">
-                        <h4 className="text-sm font-black tracking-widest uppercase text-ehc-indigo mb-6">Event Execution Plan</h4>
+                        <h4 className="font-comfortaa text-sm font-bold tracking-widest uppercase text-ehc-indigo mb-6">Event Execution Plan</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           {event.steps.map((step, stepIndex) => (
                             <div key={stepIndex} className="flex space-x-4 items-start">
-                              <div className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-black shrink-0 shadow-md">
+                              <div className="font-comfortaa w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold shrink-0 shadow-md">
                                 {stepIndex + 1}
                               </div>
-                              <p className="text-sm text-slate-700 leading-relaxed font-medium mt-1">
+                              <p className="text-sm text-slate-700 leading-relaxed font-semibold mt-1">
                                 {step}
                               </p>
                             </div>

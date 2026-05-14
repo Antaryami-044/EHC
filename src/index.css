@@ -1,41 +1,48 @@
 @import "tailwindcss";
 
+/* TAILWIND V4 CONFIGURATION */
 @theme {
   --color-ehc-indigo: #4f46e5;
   --color-ehc-rose: #fef2f2;
   --color-ehc-light: #e0e7ff;
+
+  /* Register your fonts here. Tailwind v4 automatically creates .font-quicksand and .font-comfortaa */
+  --font-quicksand: 'Quicksand', sans-serif;
+  --font-comfortaa: 'Comfortaa', sans-serif;
 }
 
-/* 1. Set global font to Outfit */
 @layer base {
   body {
-    font-family: 'Outfit', sans-serif;
+    /* Set global font to Quicksand */
+    font-family: var(--font-quicksand);
     background-image: linear-gradient(to bottom right, #fef2f2, #e0e7ff, #4f46e5);
     @apply bg-fixed text-slate-800 antialiased selection:bg-ehc-indigo selection:text-white min-h-screen overflow-x-hidden;
   }
 }
 
-/* 2. Manually create the font-stencil and font-mono classes to guarantee they work */
-@layer utilities {
-  .font-stencil {
-    font-family: "Sirin Stencil", sans-serif !important;
-  }
-  
-  .font-mono {
-    font-family: "Space Mono", monospace !important;
-  }
-}
-
 @layer components {
   .glass-pill {
-    @apply backdrop-blur-xl bg-white/40 border border-white/60 rounded-full shadow-sm text-slate-800;
+    /* Added Comfortaa to pills by default */
+    @apply backdrop-blur-xl bg-white/40 border border-white/60 rounded-full shadow-sm text-slate-800 font-comfortaa font-bold;
   }
   
   .bento-card {
-    @apply bg-white/40 border border-white/60 rounded-[2rem] p-8 backdrop-blur-md transition-all duration-300 hover:bg-white/60 hover:border-white/80 shadow-xl shadow-indigo-900/5 hover:shadow-2xl hover:shadow-indigo-900/10;
+    @apply bg-white/40 border border-white/60 rounded-[2rem] p-8 backdrop-blur-md transition-all duration-300 hover:bg-white/60 hover:border-white/80 shadow-xl shadow-indigo-900/5;
   }
+}
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-ehc-indigo to-indigo-400;
-  }
+/* Custom scrollbar for text-only project layout */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
 }
