@@ -60,7 +60,7 @@ npm install
 3. Run Development Server
 Bash
 npm run dev
-Open in your browser: 👉 http://localhost:5173
+Open in your browser: 👉 http://localhost:5173 or http://localhost:3000
 
 4. Build for Production
 Bash
