@@ -29,33 +29,41 @@ import img22 from "../assets/gallery/img22.jpg";
 import img23 from "../assets/gallery/img23.jpg";
 import img24 from "../assets/gallery/img24.JPG";
 import img25 from "../assets/gallery/img25.JPG";
+import img26 from "../assets/gallery/img26.jpeg";
+import img27 from "../assets/gallery/img27.jpeg";
+import img28 from "../assets/gallery/img28.jpeg";
+import img29 from "../assets/gallery/img29.jpeg";
+import img30 from "../assets/gallery/img30.jpeg";
+import img31 from "../assets/gallery/img31.jpeg";
+import img32 from "../assets/gallery/img32.jpeg";
+
 
 const galleryImages = [
-  { src: img1, category: "Sankalp", title: "Day - 1", desc: "Members assembling a complex breadboard circuit during our weekend hackathon." },
-  { src: img2, category: "Sankalp", title: "Tech Symposium", desc: "Keynote speech at the annual NIST Tech Symposium." },
-  { src: img3, category: "Sankalp", title: "Core Committee", desc: "The EHC Core Committee brainstorming session." },
-  { src: img4, category: "Sankalp", title: "22-23-24", desc: "Testing the newly built line follower robot." },
-  { src: img5, category: "Sankalp", title: "Batch 2k22", desc: "Hands-on soldering workshop for first-year students." },
-  { src: img6, category: "Event", title: "Room ShowCase", desc: "Calibrating the new IoT weather station module." },
-  { src: img7, category: "Event", title: "Project Demo", desc: "Presenting the final year IoT project to the faculty." },
-  { src: img8, category: "Sankalp", title: "Batch 2k24", desc: "Crowd gathering for the main event at SANKALP." },
-  { src: img9, category: "Team", title: "Girls Group", desc: "Fine-tuning the quadcopter ESCs." },
-  { src: img10, category: "Sankalp", title: "2k23", desc: "Reviewing the custom PCB layout before printing." },
-  { src: img11, category: "Team", title: "Batch 22 - 24", desc: "Winners of the Circuit-a-Thon receiving their prizes." },
-  { src: img12, category: "Team", title: "2022", desc: "The software team fixing bugs at 2 AM." },
-  { src: img13, category: "Farewell", title: "Welcome Preparation", desc: "Setting up the Raspberry Pi server for home automation." },
-  { src: img14, category: "Farewell", title: "Last Day For 2020 Batch", desc: "Industry expert discussing the future of embedded systems." },
-  { src: img15, category: "Farewell", title: "Moment with Sir", desc: "Programming the 6-axis robotic arm." },
-  { src: img16, category: "Farewell", title: "Group Photo", desc: "EHC members at the end of the semester." },
-  { src: img17, category: "Event", title: "WorkShop", desc: "Precision soldering on an SMD board." },
-  { src: img18, category: "Sankalp", title: "Batch 2k21", desc: "Displaying our best projects at the college exhibition." },
-  { src: img19, category: "Sankalp", title: "2k22", desc: "Field testing the agricultural automation bot." },
-  { src: img20, category: "Team", title: "2020", desc: "Planning the next major flagship event." },
-  { src: img21, category: "Farewell", title: "Final Photo for Batch 2k21", desc: "Flashing firmware onto the ESP32." },
-  { src: img22, category: "Farewell", title: "Batch 21-23", desc: "Students lining up to register for the workshop." },
-  { src: img23, category: "Team", title: "Best Moment For 2k22", desc: "Assembling the metal chassis for the combat bot." },
-  { src: img24, category: "Team", title: "Mentorship", desc: "Seniors guiding juniors through complex schematics." },
-  { src: img25, category: "Team", title: "Batch 2K21", desc: "Analyzing waveforms during circuit debugging." },
+  { src: img1, category: "Sankalp", title: "Day - 1", desc: "Kicking off the grand SANKALP fest with incredible energy and enthusiasm from all participants." },
+  { src: img2, category: "Sankalp", title: "Tech Symposium", desc: "Insightful discussions and expert talks during the annual NIST Tech Symposium." },
+  { src: img3, category: "Sankalp", title: "Core Committee", desc: "The driving force behind the club—our core committee planning the next big thing." },
+  { src: img4, category: "Sankalp", title: "22-23-24", desc: "Generations of innovators coming together to celebrate the spirit of SANKALP." },
+  { src: img5, category: "Sankalp", title: "Batch 2k22", desc: "The brilliant minds of Batch 2k22 showcasing their dedication and teamwork." },
+  { src: img6, category: "Event", title: "Room ShowCase", desc: "A stunning display of our latest hardware prototypes and interactive exhibits." },
+  { src: img7, category: "Event", title: "Project Demo", desc: "Live demonstration of our flagship projects to the faculty and fellow students." },
+  { src: img8, category: "Sankalp", title: "Batch 2k24", desc: "The fresh energy and rising talent of Batch 2k24 at the SANKALP fest." },
+  { src: img9, category: "Team", title: "Girls Group", desc: "Empowering women in tech! Our amazing female members leading by example." },
+  { src: img10, category: "Sankalp", title: "2k23", desc: "Batch 2k23 representing the club with passion and technical excellence." },
+  { src: img11, category: "Team", title: "Batch 22 - 24", desc: "A beautiful collaborative moment bridging the gap between our senior and junior batches." },
+  { src: img12, category: "Team", title: "2022", desc: "Cherishing the memories and incredible milestones achieved by the 2022 team." },
+  { src: img13, category: "Farewell", title: "Welcome Preparation", desc: "Decorating and setting the stage to give our seniors a warm and memorable farewell." },
+  { src: img14, category: "Farewell", title: "Last Day For 2020 Batch", desc: "An emotional send-off for the legendary 2020 batch. Thank you for your guidance!" },
+  { src: img15, category: "Farewell", title: "Moment with Sir", desc: "A heartfelt moment of appreciation with our esteemed mentors and faculty advisors." },
+  { src: img16, category: "Farewell", title: "Group Photo", desc: "One last group picture to capture the unforgettable bonds built at EHC." },
+  { src: img17, category: "Workshop", title: "WorkShop", desc: "Hands-on learning and skill-building during our intensive technical workshop." },
+  { src: img18, category: "Sankalp", title: "Batch 2k21", desc: "Honoring the legacy and outstanding contributions of the 2k21 batch." },
+  { src: img19, category: "Sankalp", title: "2k22", desc: "The 2k22 batch stepping up and making their mark at the annual fest." },
+  { src: img20, category: "Team", title: "2020", desc: "A throwback to the founding pillars of our recent successes—the 2020 team." },
+  { src: img21, category: "Farewell", title: "Final Photo for Batch 2k21", desc: "Saying goodbye to the 2k21 batch with a final, picture-perfect memory." },
+  { src: img22, category: "Farewell", title: "Batch 21-23", desc: "A beautiful transition of leadership and camaraderie between the 21 and 23 batches." },
+  { src: img23, category: "Team", title: "Best Moment For 2k22", desc: "Capturing the joy, teamwork, and unforgettable experiences of the 2k22 batch." },
+  { src: img24, category: "Team", title: "Mentorship", desc: "Seniors passing down their knowledge and guiding the next generation of hardware engineers." },
+  { src: img25, category: "Team", title: "Batch 2K21", desc: "A tribute to the hard work, late nights, and brilliant projects of Batch 2K21." },
 ];
 
 const categories = ["All", "Sankalp", "Workshop", "Team", "Farewell"];
@@ -63,7 +71,11 @@ const categories = ["All", "Sankalp", "Workshop", "Team", "Farewell"];
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  
+  // Loader States
   const [isLoaded, setIsLoaded] = useState(false);
+  const [loadedCount, setLoadedCount] = useState(0);
+  
   const [displayImages, setDisplayImages] = useState(galleryImages);
 
   useEffect(() => {
@@ -78,11 +90,25 @@ export default function Gallery() {
 
     setDisplayImages(shuffleArray(galleryImages));
 
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 2500);
+    // Simulated Progressive Loading (from 0 to 25 over 2.5 seconds)
+    let currentCount = 0;
+    const totalImages = galleryImages.length;
+    const intervalTime = 2500 / totalImages;
 
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      currentCount += 1;
+      if (currentCount <= totalImages) {
+        setLoadedCount(currentCount);
+      }
+      
+      // When we hit 25, clear the interval and smoothly remove the loader
+      if (currentCount >= totalImages) {
+        clearInterval(interval);
+        setTimeout(() => setIsLoaded(true), 300); // brief pause at 100%
+      }
+    }, intervalTime);
+
+    return () => clearInterval(interval);
   }, []);
 
   const filteredImages =
@@ -116,67 +142,79 @@ export default function Gallery() {
     }
   };
 
-  // --- FIXED LOADER ---
-  // Removed "fixed inset-0" so it stays beautifully inside the middle layout area
+  // --- PROGRESSIVE NUMBER LOADER ---
   if (!isLoaded) {
-    return (
-      <div className="py-20 px-4 min-h-[70vh] flex items-center justify-center">
-        <div className="relative w-full max-w-4xl mx-auto h-[400px] md:h-[500px] bg-slate-900 rounded-[3rem] overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-slate-800">
-          
-          {/* Animated background glow */}
-          <motion.div
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.15, 0.35, 0.15],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-ehc-indigo blur-3xl"
-          />
+    // SVG Math for the circular progress ring
+    const radius = 45;
+    const circumference = 2 * Math.PI * radius;
+    const strokeDashoffset = circumference - (loadedCount / galleryImages.length) * circumference;
 
-          {/* Main content */}
+    return (
+      <div className="w-full flex items-center justify-center min-h-[70vh] py-10 px-4">
+        <div className="relative w-full max-w-4xl h-[400px] md:h-[500px] bg-slate-900 rounded-[3rem] overflow-hidden flex flex-col items-center justify-center shadow-2xl border border-slate-800">
+
           <div className="relative z-10 flex flex-col items-center">
-            {/* Circular Loader */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="relative w-20 h-20 md:w-28 md:h-28 mb-8 md:mb-10"
-            >
-              <div className="absolute inset-0 border-[4px] md:border-[5px] border-white/10 rounded-full" />
-              <div className="absolute inset-0 border-[4px] md:border-[5px] border-t-ehc-indigo border-r-transparent border-b-transparent border-l-transparent rounded-full" />
-            </motion.div>
+            
+            {/* Dynamic Progress Circle */}
+            <div className="relative w-28 h-28 md:w-36 md:h-36 mb-8 md:mb-12 flex items-center justify-center">
+              
+              {/* Background & Animated Stroke Ring */}
+              <svg className="absolute inset-0 w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r={radius}
+                  fill="transparent"
+                  stroke="rgba(255, 255, 255, 0.05)"
+                  strokeWidth="4"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r={radius}
+                  fill="transparent"
+                  stroke="#4f46e5" /* Tailwind ehc-indigo */
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={strokeDashoffset}
+                  className="transition-all duration-100 ease-linear"
+                />
+              </svg>
+
+              {/* Number Readout (e.g., "12 / 25") */}
+              <div className="absolute flex flex-col items-center justify-center mt-1 text-white">
+                <span className="font-comfortaa text-3xl md:text-4xl font-black tracking-tighter leading-none">
+                  {loadedCount}
+                </span>
+                <span className="font-comfortaa text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">
+                  / {galleryImages.length}
+                </span>
+              </div>
+            </div>
 
             {/* Main Title */}
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="font-comfortaa text-white text-3xl md:text-6xl font-black tracking-[0.2em] md:tracking-[0.3em] uppercase text-center px-4"
+              transition={{ duration: 0.5 }}
+              className="font-comfortaa text-white text-2xl md:text-4xl font-black tracking-[0.2em] md:tracking-[0.3em] uppercase text-center px-4"
             >
               MEMORY CORE
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="font-comfortaa text-slate-400 mt-4 md:mt-5 text-[10px] md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold"
-            >
-              Initializing Gallery System...
-            </motion.p>
+            <p className="font-comfortaa text-slate-400 mt-4 md:mt-5 text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold">
+              Loading Assets...
+            </p>
+
           </div>
         </div>
       </div>
     );
   }
 
+  // --- ACTUAL GALLERY LAYOUT ---
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -271,6 +309,7 @@ export default function Gallery() {
           </AnimatePresence>
         </motion.div>
 
+        {/* LIGHTBOX MODAL */}
         <AnimatePresence>
           {selectedImageIndex !== null && (
             <motion.div

@@ -8,7 +8,7 @@ import ehc from '../assets/logo-removebg-preview.png';
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'Events', path: '/events' },
-  // { name: 'Gallery', path: '/gallery' },
+  { name: 'Gallery', path: '/gallery' },
   { name: 'Team', path: '/team' },
   { name: 'Contact', path: '/contact' },
 ];
