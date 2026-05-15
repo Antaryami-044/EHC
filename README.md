@@ -3,7 +3,7 @@
 Welcome to the official repository of the **Electronics Hobby Club (EHC)** at **NIST University**.  
 This project is a modern, responsive web platform built to showcase club activities, projects, events, and team members.
 
-🔗 **Live Demo:** *(Add your deployed link here – Vercel/Netlify)*
+🔗 **Live Demo:** *https://ehc-nist.netlify.app*
 
 ---
 
