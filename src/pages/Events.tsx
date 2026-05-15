@@ -185,7 +185,7 @@ export default function Events() {
                   
                   <button 
                     onClick={() => toggleExpand(event.id)}
-                    className="font-comfortaa w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold tracking-widest uppercase rounded-full hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 text-sm"
+                    className="font-comfortaa w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold tracking-widest uppercase rounded-full hover:bg-slate-50 transition-colors flex items-center justify-center gap-2 text-sm cursor-pointer"
                   >
                     Details {expandedId === event.id ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                   </button>
