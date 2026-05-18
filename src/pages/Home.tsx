@@ -108,7 +108,7 @@ export default function Home() {
             <Link to="/events" className="font-comfortaa w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-ehc-indigo text-white font-bold tracking-widest uppercase rounded-full hover:bg-slate-900 hover:scale-105 transition-all duration-300 shadow-xl shadow-indigo-900/20 text-sm sm:text-base">
               Explore Events
             </Link>
-            <a href="#" className="font-comfortaa w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white/60 border border-white/50 text-slate-800 font-bold tracking-widest uppercase rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
+            <a href="https://chat.whatsapp.com/Kj4IH9GcMukAo58Dh0c2hP" className="font-comfortaa w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-white/60 border border-white/50 text-slate-800 font-bold tracking-widest uppercase rounded-full hover:bg-white hover:shadow-lg transition-all duration-300 text-sm sm:text-base">
               Join Community
             </a>
           </motion.div>
